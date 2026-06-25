@@ -1,0 +1,104 @@
+Convert the technical indicators into actual backtestable strategies by adding explicit BUY and SELL rules for each indicator.
+
+Use these rules:
+
+1. RSI Strategy
+- Calculate RSI(14).
+- BUY when RSI crosses above 30 after being below 30.
+- SELL when RSI crosses above 70 or crosses below 50 after entry.
+
+2. ADX-DI Strategy
+- Calculate ADX(14), +DI, and -DI.
+- BUY when +DI crosses above -DI and ADX > 25.
+- SELL when -DI crosses above +DI or ADX falls below 20.
+
+3. ATR Breakout Strategy
+- Calculate ATR(14).
+- BUY when Close breaks above the previous 20-day high plus 0.5 × ATR.
+- SELL using a trailing stop: Close < highest close since entry - 2 × ATR.
+
+4. SMA Crossover Strategy
+- Calculate SMA(50) and SMA(200).
+- BUY when SMA(50) crosses above SMA(200).
+- SELL when SMA(50) crosses below SMA(200).
+
+5. EMA Crossover Strategy
+- Calculate EMA(12) and EMA(26).
+- BUY when EMA(12) crosses above EMA(26).
+- SELL when EMA(12) crosses below EMA(26).
+
+6. MACD Strategy
+- Calculate MACD using 12, 26, 9 settings.
+- BUY when MACD line crosses above the signal line.
+- SELL when MACD line crosses below the signal line.
+
+7. Bollinger Band Mean Reversion Strategy
+- Calculate Bollinger Bands using SMA(20) and 2 standard deviations.
+- BUY when Close crosses back above the lower band after closing below it.
+- SELL when Close reaches the middle band or upper band.
+
+8. Stochastic Strategy
+- Calculate %K and %D using standard 14, 3 settings.
+- BUY when %K crosses above %D while both are below 20.
+- SELL when %K crosses below %D while both are above 80.
+
+9. CCI Strategy
+- Calculate CCI(20).
+- BUY when CCI crosses above -100.
+- SELL when CCI crosses below +100 or below 0.
+
+10. MFI Strategy
+- Calculate MFI(14).
+- BUY when MFI crosses above 20.
+- SELL when MFI crosses below 80 after previously being above 80.
+
+11. OBV Strategy
+- Calculate OBV and OBV SMA(20).
+- BUY when OBV crosses above OBV SMA(20).
+- SELL when OBV crosses below OBV SMA(20).
+
+12. VWAP Strategy
+- Calculate VWAP.
+- BUY when Close crosses above VWAP and Volume is above Volume SMA(20).
+- SELL when Close crosses below VWAP.
+
+13. Supertrend Strategy
+- Calculate Supertrend using ATR period 10 and multiplier 3.
+- BUY when Supertrend turns bullish.
+- SELL when Supertrend turns bearish.
+
+14. Parabolic SAR Strategy
+- Calculate Parabolic SAR.
+- BUY when Close crosses above SAR.
+- SELL when Close crosses below SAR.
+
+15. Williams %R Strategy
+- Calculate Williams %R(14).
+- BUY when Williams %R crosses above -80.
+- SELL when Williams %R crosses below -20.
+
+16. ROC Momentum Strategy
+- Calculate ROC(12).
+- BUY when ROC crosses above 0.
+- SELL when ROC crosses below 0.
+
+17. Donchian Channel Strategy
+- Calculate 20-day high and 10-day low.
+- BUY when Close breaks above the previous 20-day high.
+- SELL when Close breaks below the previous 10-day low.
+
+18. Keltner Channel Strategy
+- Calculate Keltner Channel using EMA(20) and ATR(10).
+- BUY when Close breaks above the upper Keltner Channel.
+- SELL when Close falls below the middle Keltner line.
+
+For all strategies:
+- Use long-only trading.
+- One position at a time.
+- Generate signals after market close.
+- Execute trades at the next trading day open.
+- Include transaction fees.
+- Avoid look-ahead bias.
+- Save all completed trades into trade_history.csv.
+- Each trade row must include region, ticker, company_name, strategy, buy_date, buy_price, sell_date, sell_price, holding_period, roi_pct, trade_return, and exit_reason.
+- If a strategy has an active open BUY position at the end of the test period, record it in latest_signals.csv but do not force it into trade_history.csv unless the framework supports unrealized trades separately.

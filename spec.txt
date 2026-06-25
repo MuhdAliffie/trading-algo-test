@@ -1,0 +1,397 @@
+You are working on my trading strategy backtesting codebase. I want to test and compare the performance of four trading tools/strategies across stock markets in three regions only:
+
+1. Asia stock market
+2. Europe stock market
+3. US stock market
+
+For each region, limit the analysis to the current top 100 stocks by market capitalization. The stock universe should not be hardcoded unless necessary. Try to fetch or construct the latest top 100 list for each region using reliable market data sources. If live fetching is not possible, create a clear fallback method using CSV files such as:
+
+* data/universe/asia_top100.csv
+* data/universe/europe_top100.csv
+* data/universe/us_top100.csv
+
+Each CSV should contain at least:
+
+* ticker
+* company_name
+* region
+* exchange
+* sector, if available
+* market_cap, if available
+
+The four strategies/tools to test are:
+
+1. Volume-based strategy
+2. MACD strategy
+3. LSTM-Inspired Bollinger Band Mean Reversion strategy
+4. Ichimoku Cloud strategy
+
+Main objective:
+Backtest all four strategies on the top 100 stocks in Asia, Europe, and the US, run the tests in parallel for efficiency, compare the results, and generate a Markdown report containing tables and graphs.
+
+Important:
+This is for research and performance comparison only, not financial advice.
+
+Implementation requirements:
+
+1. Repository Inspection
+
+* First inspect the current repository structure.
+* Identify existing data loading, indicator calculation, backtesting, plotting, and reporting files.
+* Reuse existing code where suitable.
+* Do not delete useful existing code unless necessary.
+* Before coding, explain the planned changes briefly.
+
+2. Market Universe
+
+* Create a module to build/load the stock universe.
+* The universe should contain:
+
+  * Top 100 Asia stocks
+  * Top 100 Europe stocks
+  * Top 100 US stocks
+* Define “top 100” by market capitalization at runtime where possible.
+* If exact market cap ranking is unavailable, use a reasonable proxy such as major index constituents or user-provided universe CSVs.
+* Make the universe source transparent in the final report.
+* Ensure all tickers are compatible with the chosen data provider.
+
+3. Market Data
+
+* Download or load OHLCV data for every stock.
+* Required columns:
+
+  * Date
+  * Open
+  * High
+  * Low
+  * Close
+  * Adjusted Close, if available
+  * Volume
+* Use daily data by default.
+* Use a configurable backtest period, defaulting to the most recent 5 years.
+* Clean missing values carefully.
+* Sort all data by date.
+* Skip stocks with insufficient data and record them in the final report.
+* Use adjusted close for return calculations if available.
+
+4. Strategy Implementation
+   Implement each strategy as a separate class or function with configurable parameters.
+
+A. Volume Strategy
+
+* Use volume moving average and volume spike confirmation.
+* Example logic:
+
+  * Buy when volume is significantly above its moving average and price closes higher.
+  * Sell when volume spike confirms weakness or price momentum reverses.
+* Make window length and volume spike threshold configurable.
+
+B. MACD Strategy
+
+* Calculate MACD line, signal line, and histogram.
+* Default settings:
+
+  * Fast EMA = 12
+  * Slow EMA = 26
+  * Signal EMA = 9
+* Buy when MACD crosses above signal line.
+* Sell when MACD crosses below signal line.
+* Avoid look-ahead bias.
+
+C. LSTM-Inspired Bollinger Band Mean Reversion Strategy
+
+* Do not use a real LSTM unless the existing codebase already supports it.
+* Build an explainable “LSTM-inspired” scoring model using rolling historical features such as:
+
+  * Bollinger Band position
+  * Z-score of price
+  * Rolling volatility
+  * Short-term momentum
+  * Distance from moving average
+* Buy when price is below or near the lower Bollinger Band and the score suggests upward mean reversion.
+* Sell when price reaches the middle/upper band, the score weakens, or risk control is triggered.
+* The model must not use future data.
+* Clearly explain the score calculation in comments and in the report.
+
+D. Ichimoku Cloud Strategy
+
+* Calculate:
+
+  * Tenkan-sen
+  * Kijun-sen
+  * Senkou Span A
+  * Senkou Span B
+  * Chikou Span
+* Handle forward-shifted cloud values correctly.
+* Do not use future information when generating signals.
+* Buy when price is above the cloud and Tenkan-sen crosses above Kijun-sen.
+* Sell when price falls below the cloud or Tenkan-sen crosses below Kijun-sen.
+
+5. Backtesting Rules
+   Use the same backtesting rules for all strategies and all stocks.
+
+Default assumptions:
+
+* Initial capital per stock = 10,000
+* Long-only strategy
+* One position at a time
+* No leverage
+* No short selling
+* Include transaction fee or commission, default 0.1% per trade
+* Signals are generated after market close.
+* Trades are executed on the next available trading day’s open price to avoid look-ahead bias.
+* Track:
+
+  * Cash
+  * Shares/units held
+  * Entry date
+  * Exit date
+  * Entry price
+  * Exit price
+  * Portfolio value
+  * Trade return
+  * Cumulative return
+
+6. Parallel Processing
+
+* Run backtests in parallel for speed.
+* The structure should support:
+
+  * 3 regions
+  * 100 stocks per region
+  * 4 strategies per stock
+* Use a safe parallel method such as concurrent.futures.
+* Add progress logging using tqdm or a similar library.
+* Handle failures gracefully so one failed ticker does not stop the whole run.
+* Save errors into a log file.
+
+7. Performance Metrics
+   For each stock, region, and strategy, calculate:
+
+* Latest signal: BUY, SELL, or HOLD
+* Latest signal date
+* Total return
+* Annualized return
+* Sharpe ratio
+* Maximum drawdown
+* Win rate
+* Number of trades
+* Average trade return
+* Best trade
+* Worst trade
+* Profit factor
+* Exposure time
+* Buy-and-hold return
+* Strategy return minus buy-and-hold return
+
+8. Output Files
+   Create a structured output folder such as:
+
+results/
+asia/
+tables/
+charts/
+europe/
+tables/
+charts/
+us/
+tables/
+charts/
+combined/
+tables/
+charts/
+report.md
+
+Save these CSV files:
+
+* results/combined/all_strategy_results.csv
+* results/combined/latest_signals.csv
+* results/combined/trade_history.csv
+* results/combined/skipped_tickers.csv
+* results/combined/error_log.csv
+
+Also save region-specific CSV files:
+
+* asia_strategy_results.csv
+* europe_strategy_results.csv
+* us_strategy_results.csv
+
+9. Graphs
+   Generate and save graphs as PNG files, then embed them into the Markdown report.
+
+Required graphs:
+
+* Equity curve comparison by strategy for each region
+* Average return by strategy and region
+* Sharpe ratio comparison by strategy and region
+* Maximum drawdown comparison by strategy and region
+* Number of BUY, SELL, and HOLD signals by region
+* Top 10 stocks by strategy return for each region
+* Worst 10 stocks by strategy return for each region
+* Buy-and-hold vs strategy return comparison
+
+For individual stocks:
+
+* Generate price charts with buy/sell markers only for:
+
+  * Top 5 performing stocks per region per strategy
+  * Worst 5 performing stocks per region per strategy
+  * Any stock with an active BUY signal
+* Do not generate 300 × 4 individual charts unless necessary because that will be too many files.
+
+10. Markdown Report
+    Create a final Markdown report at:
+
+results/report.md
+
+The report should include:
+
+# Trading Tools Performance Report
+
+## 1. Objective
+
+Explain that the study compares Volume, MACD, LSTM-Inspired Bollinger Band Mean Reversion, and Ichimoku Cloud strategies across Asia, Europe, and US top 100 stocks.
+
+## 2. Data and Universe
+
+Include:
+
+* Data source
+* Date range
+* Number of stocks tested per region
+* Number of skipped stocks
+* Any limitations
+
+## 3. Strategy Rules
+
+Briefly explain the buy/sell logic for:
+
+* Volume
+* MACD
+* LSTM-Inspired Bollinger Band Mean Reversion
+* Ichimoku Cloud
+
+## 4. Overall Results
+
+Include a table comparing each strategy by region:
+
+Columns:
+
+* Region
+* Strategy
+* Average total return
+* Median total return
+* Average annualized return
+* Average Sharpe ratio
+* Average maximum drawdown
+* Win rate
+* Number of trades
+* Buy-and-hold return
+* Strategy minus buy-and-hold
+
+## 5. Latest Buy/Sell/Hold Indications
+
+Include tables showing latest signals.
+
+Columns:
+
+* Region
+* Ticker
+* Company name
+* Strategy
+* Latest signal
+* Latest signal date
+* Last close price
+* Strategy return
+* Buy-and-hold return
+* Difference vs buy-and-hold
+
+Separate this section into:
+
+* Asia latest signals
+* Europe latest signals
+* US latest signals
+
+## 6. Best Performing Stocks
+
+Show top 10 stocks by strategy return for each region.
+
+Columns:
+
+* Region
+* Ticker
+* Company name
+* Strategy
+* Total return
+* Annualized return
+* Sharpe ratio
+* Maximum drawdown
+* Number of trades
+* Latest signal
+
+## 7. Worst Performing Stocks
+
+Show worst 10 stocks by strategy return for each region.
+
+## 8. Graphs
+
+Embed all required graphs using Markdown image syntax, for example:
+
+![Asia equity curve](asia/charts/asia_equity_curve_by_strategy.png)
+
+## 9. Trade History Summary
+
+Summarize what stocks were bought and sold based on the strategy indications.
+
+Include a table with:
+
+* Region
+* Ticker
+* Strategy
+* Buy date
+* Buy price
+* Sell date
+* Sell price
+* Trade return
+* Holding period
+* Exit reason
+
+## 10. Conclusion
+
+Explain:
+
+* Which strategy performed best overall
+* Which strategy performed best in Asia
+* Which strategy performed best in Europe
+* Which strategy performed best in the US
+* Whether technical indicators beat buy-and-hold
+* Main limitations of the backtest
+
+11. Code Quality
+
+* Keep the code modular.
+* Use clear function and class names.
+* Add comments for important logic.
+* Avoid look-ahead bias.
+* Make parameters configurable.
+* Add error handling.
+* Add sanity checks.
+* Make the project runnable from one main script, for example:
+
+python main.py
+
+or
+
+python run_backtest.py
+
+12. Final Explanation
+    After implementing, explain:
+
+* What files were created or modified
+* How to run the backtest
+* Where the Markdown report is saved
+* Where the CSV results are saved
+* Any assumptions made
+* Any tickers skipped and why
+
+“Do not just create placeholder results. The report must be generated from actual backtest outputs. If data cannot be downloaded, clearly stop and explain what data files are required.

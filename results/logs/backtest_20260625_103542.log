@@ -1,0 +1,501 @@
+2026-06-25 10:35:42,366 - __main__ - INFO - ================================================================================
+2026-06-25 10:35:42,367 - __main__ - INFO - TRADING STRATEGY BACKTESTING SYSTEM
+2026-06-25 10:35:42,367 - __main__ - INFO - ================================================================================
+2026-06-25 10:35:42,368 - __main__ - INFO - Start time: 2026-06-25 10:35:42.367998
+2026-06-25 10:35:42,368 - __main__ - INFO - Backtest period: 2021-06-26 to 2026-06-25
+2026-06-25 10:35:42,368 - __main__ - INFO - Strategies: Volume, MACD, LSTM_Bollinger, Ichimoku
+2026-06-25 10:35:42,369 - __main__ - INFO - Max workers: 4
+2026-06-25 10:35:42,369 - __main__ - INFO - 
+================================================================================
+2026-06-25 10:35:42,370 - __main__ - INFO - STEP 1: UNIVERSE CREATION
+2026-06-25 10:35:42,372 - __main__ - INFO - ================================================================================
+2026-06-25 10:35:42,374 - src.universe - INFO - Creating universe file: data/universe/asia_top100.csv
+2026-06-25 10:35:42,388 - src.universe - INFO - Created universe file with 100 stocks
+2026-06-25 10:35:42,390 - src.universe - INFO - Creating universe file: data/universe/europe_top100.csv
+2026-06-25 10:35:42,404 - src.universe - INFO - Created universe file with 100 stocks
+2026-06-25 10:35:42,406 - src.universe - INFO - Creating universe file: data/universe/us_top100.csv
+2026-06-25 10:35:42,417 - src.universe - INFO - Created universe file with 100 stocks
+2026-06-25 10:35:42,433 - src.universe - INFO - Loaded 34 stocks for Asia
+2026-06-25 10:35:42,441 - src.universe - INFO - Loaded 10 stocks for Europe
+2026-06-25 10:35:42,445 - src.universe - INFO - Loaded 20 stocks for US
+2026-06-25 10:35:42,445 - __main__ - INFO - Asia: 34 stocks loaded
+2026-06-25 10:35:42,446 - __main__ - INFO - Europe: 10 stocks loaded
+2026-06-25 10:35:42,446 - __main__ - INFO - US: 20 stocks loaded
+2026-06-25 10:35:42,446 - __main__ - INFO - 
+================================================================================
+2026-06-25 10:35:42,446 - __main__ - INFO - STEP 2: PARALLEL BACKTESTING
+2026-06-25 10:35:42,446 - __main__ - INFO - ================================================================================
+2026-06-25 10:35:42,446 - __main__ - INFO - 
+Processing Asia...
+2026-06-25 10:35:42,452 - yfinance - INFO - Failed to create TzCache, reason: Error creating TzCache folder: 'C:\Users\alifie\AppData\Local\py-yfinance' reason: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\alifie\\AppData\\Local\\py-yfinance'. TzCache will not be used. Tip: You can direct cache to use a different location with 'set_tz_cache_location(mylocation)'
+2026-06-25 10:35:42,455 - yfinance - INFO - Failed to create TzCache, reason: Error creating TzCache folder: 'C:\Users\alifie\AppData\Local\py-yfinance' reason: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\alifie\\AppData\\Local\\py-yfinance'. TzCache will not be used. Tip: You can direct cache to use a different location with 'set_tz_cache_location(mylocation)'
+2026-06-25 10:35:43,218 - yfinance - ERROR - Failed to get ticker '0700.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:43,908 - yfinance - ERROR - Failed to get ticker '2800.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:44,623 - yfinance - ERROR - Failed to get ticker '0001.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:44,624 - yfinance - ERROR - $0001.HK: possibly delisted; no timezone found
+2026-06-25 10:35:44,625 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:44,625 - yfinance - ERROR - ['0001.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:44,632 - src.data_loader - WARNING - No data downloaded for 0001.HK
+2026-06-25 10:35:44,633 - src.data_loader - WARNING - 0001.HK: No data available
+2026-06-25 10:35:45,315 - yfinance - ERROR - Failed to get ticker '3690.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:45,318 - yfinance - ERROR - $3690.HK: possibly delisted; no timezone found
+2026-06-25 10:35:45,325 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:45,326 - yfinance - ERROR - ['3690.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:45,333 - src.data_loader - WARNING - No data downloaded for 3690.HK
+2026-06-25 10:35:45,334 - src.data_loader - WARNING - 3690.HK: No data available
+2026-06-25 10:35:46,056 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:46,056 - yfinance - ERROR - ['0700.HK']: CertificateVerifyError('Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-06-25 10:35:46,062 - src.data_loader - WARNING - No data downloaded for 0700.HK
+2026-06-25 10:35:46,062 - src.data_loader - WARNING - 0700.HK: No data available
+2026-06-25 10:35:46,743 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:46,744 - yfinance - ERROR - ['2800.HK']: CertificateVerifyError('Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-06-25 10:35:46,748 - src.data_loader - WARNING - No data downloaded for 2800.HK
+2026-06-25 10:35:46,749 - src.data_loader - WARNING - 2800.HK: No data available
+2026-06-25 10:35:47,461 - yfinance - ERROR - Failed to get ticker '9988.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:47,463 - yfinance - ERROR - $9988.HK: possibly delisted; no timezone found
+2026-06-25 10:35:47,473 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:47,474 - yfinance - ERROR - ['9988.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:47,481 - src.data_loader - WARNING - No data downloaded for 9988.HK
+2026-06-25 10:35:47,481 - src.data_loader - WARNING - 9988.HK: No data available
+2026-06-25 10:35:48,157 - yfinance - ERROR - Failed to get ticker '1398.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:48,158 - yfinance - ERROR - $1398.HK: possibly delisted; no timezone found
+2026-06-25 10:35:48,168 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:48,171 - yfinance - ERROR - ['1398.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:48,179 - src.data_loader - WARNING - No data downloaded for 1398.HK
+2026-06-25 10:35:48,180 - src.data_loader - WARNING - 1398.HK: No data available
+2026-06-25 10:35:48,850 - yfinance - ERROR - Failed to get ticker '6969.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:48,852 - yfinance - ERROR - $6969.HK: possibly delisted; no timezone found
+2026-06-25 10:35:48,858 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:48,858 - yfinance - ERROR - ['6969.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:48,865 - src.data_loader - WARNING - No data downloaded for 6969.HK
+2026-06-25 10:35:48,866 - src.data_loader - WARNING - 6969.HK: No data available
+2026-06-25 10:35:49,573 - yfinance - ERROR - Failed to get ticker '2628.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:49,575 - yfinance - ERROR - $2628.HK: possibly delisted; no timezone found
+2026-06-25 10:35:49,581 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:49,582 - yfinance - ERROR - ['2628.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:49,585 - src.data_loader - WARNING - No data downloaded for 2628.HK
+2026-06-25 10:35:49,585 - src.data_loader - WARNING - 2628.HK: No data available
+2026-06-25 10:35:51,540 - yfinance - ERROR - Failed to get ticker '0939.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:51,542 - yfinance - ERROR - $0939.HK: possibly delisted; no timezone found
+2026-06-25 10:35:51,546 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:51,546 - yfinance - ERROR - ['0939.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:51,555 - src.data_loader - WARNING - No data downloaded for 0939.HK
+2026-06-25 10:35:51,556 - src.data_loader - WARNING - 0939.HK: No data available
+2026-06-25 10:35:52,257 - yfinance - ERROR - Failed to get ticker '1916.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:52,259 - yfinance - ERROR - $1916.HK: possibly delisted; no timezone found
+2026-06-25 10:35:52,263 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:52,263 - yfinance - ERROR - ['1916.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:52,272 - src.data_loader - WARNING - No data downloaded for 1916.HK
+2026-06-25 10:35:52,273 - src.data_loader - WARNING - 1916.HK: No data available
+2026-06-25 10:35:52,973 - yfinance - ERROR - Failed to get ticker '6618.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:52,974 - yfinance - ERROR - $6618.HK: possibly delisted; no timezone found
+2026-06-25 10:35:52,976 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:52,976 - yfinance - ERROR - ['6618.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:52,996 - src.data_loader - WARNING - No data downloaded for 6618.HK
+2026-06-25 10:35:52,997 - src.data_loader - WARNING - 6618.HK: No data available
+2026-06-25 10:35:53,672 - yfinance - ERROR - Failed to get ticker '9618.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:53,673 - yfinance - ERROR - $9618.HK: possibly delisted; no timezone found
+2026-06-25 10:35:53,684 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:53,685 - yfinance - ERROR - ['9618.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:53,690 - src.data_loader - WARNING - No data downloaded for 9618.HK
+2026-06-25 10:35:53,691 - src.data_loader - WARNING - 9618.HK: No data available
+2026-06-25 10:35:54,372 - yfinance - ERROR - Failed to get ticker '1299.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:54,373 - yfinance - ERROR - $1299.HK: possibly delisted; no timezone found
+2026-06-25 10:35:54,383 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:54,385 - yfinance - ERROR - ['1299.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:54,390 - src.data_loader - WARNING - No data downloaded for 1299.HK
+2026-06-25 10:35:54,391 - src.data_loader - WARNING - 1299.HK: No data available
+2026-06-25 10:35:55,181 - yfinance - ERROR - Failed to get ticker '6993.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:55,185 - yfinance - ERROR - $6993.HK: possibly delisted; no timezone found
+2026-06-25 10:35:55,189 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:55,189 - yfinance - ERROR - ['6993.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:55,194 - src.data_loader - WARNING - No data downloaded for 6993.HK
+2026-06-25 10:35:55,194 - src.data_loader - WARNING - 6993.HK: No data available
+2026-06-25 10:35:55,925 - yfinance - ERROR - Failed to get ticker '2822.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:55,927 - yfinance - ERROR - $2822.HK: possibly delisted; no timezone found
+2026-06-25 10:35:55,929 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:55,930 - yfinance - ERROR - ['2822.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:55,939 - src.data_loader - WARNING - No data downloaded for 2822.HK
+2026-06-25 10:35:55,939 - src.data_loader - WARNING - 2822.HK: No data available
+2026-06-25 10:35:56,630 - yfinance - ERROR - Failed to get ticker '0358.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:56,632 - yfinance - ERROR - $0358.HK: possibly delisted; no timezone found
+2026-06-25 10:35:56,636 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:56,637 - yfinance - ERROR - ['0358.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:56,641 - src.data_loader - WARNING - No data downloaded for 0358.HK
+2026-06-25 10:35:56,642 - src.data_loader - WARNING - 0358.HK: No data available
+2026-06-25 10:35:57,338 - yfinance - ERROR - Failed to get ticker '1928.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:57,339 - yfinance - ERROR - $1928.HK: possibly delisted; no timezone found
+2026-06-25 10:35:57,350 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:57,351 - yfinance - ERROR - ['1928.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:57,355 - src.data_loader - WARNING - No data downloaded for 1928.HK
+2026-06-25 10:35:57,356 - src.data_loader - WARNING - 1928.HK: No data available
+2026-06-25 10:35:58,055 - yfinance - ERROR - Failed to get ticker '2601.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:58,056 - yfinance - ERROR - $2601.HK: possibly delisted; no timezone found
+2026-06-25 10:35:58,059 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:58,059 - yfinance - ERROR - ['2601.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:58,065 - src.data_loader - WARNING - No data downloaded for 2601.HK
+2026-06-25 10:35:58,065 - src.data_loader - WARNING - 2601.HK: No data available
+2026-06-25 10:35:58,763 - yfinance - ERROR - Failed to get ticker '3968.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:58,765 - yfinance - ERROR - $3968.HK: possibly delisted; no timezone found
+2026-06-25 10:35:58,774 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:58,775 - yfinance - ERROR - ['3968.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:58,792 - src.data_loader - WARNING - No data downloaded for 3968.HK
+2026-06-25 10:35:58,793 - src.data_loader - WARNING - 3968.HK: No data available
+2026-06-25 10:35:59,482 - yfinance - ERROR - Failed to get ticker '1109.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:35:59,483 - yfinance - ERROR - $1109.HK: possibly delisted; no timezone found
+2026-06-25 10:35:59,492 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:35:59,492 - yfinance - ERROR - ['1109.HK']: possibly delisted; no timezone found
+2026-06-25 10:35:59,495 - src.data_loader - WARNING - No data downloaded for 1109.HK
+2026-06-25 10:35:59,496 - src.data_loader - WARNING - 1109.HK: No data available
+2026-06-25 10:36:00,202 - yfinance - ERROR - Failed to get ticker '0175.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:00,204 - yfinance - ERROR - $0175.HK: possibly delisted; no timezone found
+2026-06-25 10:36:00,205 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:00,206 - yfinance - ERROR - ['0175.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:00,209 - src.data_loader - WARNING - No data downloaded for 0175.HK
+2026-06-25 10:36:00,209 - src.data_loader - WARNING - 0175.HK: No data available
+2026-06-25 10:36:00,910 - yfinance - ERROR - Failed to get ticker '1113.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:00,911 - yfinance - ERROR - $1113.HK: possibly delisted; no timezone found
+2026-06-25 10:36:00,915 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:00,917 - yfinance - ERROR - ['1113.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:00,921 - src.data_loader - WARNING - No data downloaded for 1113.HK
+2026-06-25 10:36:00,922 - src.data_loader - WARNING - 1113.HK: No data available
+2026-06-25 10:36:01,618 - yfinance - ERROR - Failed to get ticker '6862.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:01,619 - yfinance - ERROR - $6862.HK: possibly delisted; no timezone found
+2026-06-25 10:36:01,626 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:01,627 - yfinance - ERROR - ['6862.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:01,631 - src.data_loader - WARNING - No data downloaded for 6862.HK
+2026-06-25 10:36:01,631 - src.data_loader - WARNING - 6862.HK: No data available
+2026-06-25 10:36:02,315 - yfinance - ERROR - Failed to get ticker '3988.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:02,317 - yfinance - ERROR - $3988.HK: possibly delisted; no timezone found
+2026-06-25 10:36:02,319 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:02,319 - yfinance - ERROR - ['3988.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:02,322 - src.data_loader - WARNING - No data downloaded for 3988.HK
+2026-06-25 10:36:02,322 - src.data_loader - WARNING - 3988.HK: No data available
+2026-06-25 10:36:03,025 - yfinance - ERROR - Failed to get ticker '2378.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:03,027 - yfinance - ERROR - $2378.HK: possibly delisted; no timezone found
+2026-06-25 10:36:03,028 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:03,028 - yfinance - ERROR - ['2378.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:03,033 - src.data_loader - WARNING - No data downloaded for 2378.HK
+2026-06-25 10:36:03,034 - src.data_loader - WARNING - 2378.HK: No data available
+2026-06-25 10:36:03,729 - yfinance - ERROR - Failed to get ticker '2823.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:03,733 - yfinance - ERROR - $2823.HK: possibly delisted; no timezone found
+2026-06-25 10:36:03,743 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:03,744 - yfinance - ERROR - ['2823.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:03,754 - src.data_loader - WARNING - No data downloaded for 2823.HK
+2026-06-25 10:36:03,754 - src.data_loader - WARNING - 2823.HK: No data available
+2026-06-25 10:36:04,474 - yfinance - ERROR - Failed to get ticker '1800.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:04,475 - yfinance - ERROR - $1800.HK: possibly delisted; no timezone found
+2026-06-25 10:36:04,480 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:04,481 - yfinance - ERROR - ['1800.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:04,486 - src.data_loader - WARNING - No data downloaded for 1800.HK
+2026-06-25 10:36:04,487 - src.data_loader - WARNING - 1800.HK: No data available
+2026-06-25 10:36:05,179 - yfinance - ERROR - Failed to get ticker '6808.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:05,180 - yfinance - ERROR - $6808.HK: possibly delisted; no timezone found
+2026-06-25 10:36:05,188 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:05,188 - yfinance - ERROR - ['6808.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:05,193 - src.data_loader - WARNING - No data downloaded for 6808.HK
+2026-06-25 10:36:05,194 - src.data_loader - WARNING - 6808.HK: No data available
+2026-06-25 10:36:05,887 - yfinance - ERROR - Failed to get ticker '1088.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:05,888 - yfinance - ERROR - $1088.HK: possibly delisted; no timezone found
+2026-06-25 10:36:05,897 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:05,899 - yfinance - ERROR - ['1088.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:05,903 - src.data_loader - WARNING - No data downloaded for 1088.HK
+2026-06-25 10:36:05,904 - src.data_loader - WARNING - 1088.HK: No data available
+2026-06-25 10:36:06,077 - yfinance - ERROR - Failed to get ticker '0883.HK' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:06,078 - yfinance - ERROR - $0883.HK: possibly delisted; no timezone found
+2026-06-25 10:36:06,083 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:06,083 - yfinance - ERROR - ['0883.HK']: possibly delisted; no timezone found
+2026-06-25 10:36:06,087 - src.data_loader - WARNING - No data downloaded for 0883.HK
+2026-06-25 10:36:06,088 - src.data_loader - WARNING - 0883.HK: No data available
+2026-06-25 10:36:06,203 - yfinance - ERROR - Failed to get ticker '9999.T' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:06,205 - yfinance - ERROR - $9999.T: possibly delisted; no timezone found
+2026-06-25 10:36:06,206 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:06,207 - yfinance - ERROR - ['9999.T']: possibly delisted; no timezone found
+2026-06-25 10:36:06,210 - src.data_loader - WARNING - No data downloaded for 9999.T
+2026-06-25 10:36:06,210 - src.data_loader - WARNING - 9999.T: No data available
+2026-06-25 10:36:06,325 - yfinance - ERROR - Failed to get ticker '6753.T' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:06,326 - yfinance - ERROR - $6753.T: possibly delisted; no timezone found
+2026-06-25 10:36:06,337 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:06,337 - yfinance - ERROR - ['6753.T']: possibly delisted; no timezone found
+2026-06-25 10:36:06,341 - src.data_loader - WARNING - No data downloaded for 6753.T
+2026-06-25 10:36:06,341 - src.data_loader - WARNING - 6753.T: No data available
+2026-06-25 10:36:06,442 - yfinance - ERROR - Failed to get ticker '8058.T' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:06,443 - yfinance - ERROR - $8058.T: possibly delisted; no timezone found
+2026-06-25 10:36:06,451 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:06,452 - yfinance - ERROR - ['8058.T']: possibly delisted; no timezone found
+2026-06-25 10:36:06,455 - src.data_loader - WARNING - No data downloaded for 8058.T
+2026-06-25 10:36:06,455 - src.data_loader - WARNING - 8058.T: No data available
+2026-06-25 10:36:06,566 - yfinance - ERROR - Failed to get ticker '6901.T' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:06,567 - yfinance - ERROR - $6901.T: possibly delisted; no timezone found
+2026-06-25 10:36:06,575 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:06,575 - yfinance - ERROR - ['6901.T']: possibly delisted; no timezone found
+2026-06-25 10:36:06,578 - src.data_loader - WARNING - No data downloaded for 6901.T
+2026-06-25 10:36:06,581 - src.data_loader - WARNING - 6901.T: No data available
+2026-06-25 10:36:06,590 - __main__ - INFO - Asia Summary:
+2026-06-25 10:36:06,591 - __main__ - INFO -   - Successful: 0
+2026-06-25 10:36:06,591 - __main__ - INFO -   - Errors: 0
+2026-06-25 10:36:06,592 - __main__ - INFO -   - Skipped: 34
+2026-06-25 10:36:06,610 - __main__ - INFO -   - Saved skipped to: results/combined\asia_skipped.csv
+2026-06-25 10:36:06,610 - __main__ - INFO - 
+Processing Europe...
+2026-06-25 10:36:06,740 - yfinance - ERROR - Failed to get ticker 'SAP' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:06,744 - yfinance - ERROR - $SAP: possibly delisted; no timezone found
+2026-06-25 10:36:06,749 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:06,758 - yfinance - ERROR - ['SAP']: possibly delisted; no timezone found
+2026-06-25 10:36:06,774 - src.data_loader - WARNING - No data downloaded for SAP
+2026-06-25 10:36:06,781 - src.data_loader - WARNING - SAP: No data available
+2026-06-25 10:36:06,915 - yfinance - ERROR - Failed to get ticker 'ASML.AS' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:06,916 - yfinance - ERROR - $ASML.AS: possibly delisted; no timezone found
+2026-06-25 10:36:06,925 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:06,926 - yfinance - ERROR - ['ASML.AS']: possibly delisted; no timezone found
+2026-06-25 10:36:06,931 - src.data_loader - WARNING - No data downloaded for ASML.AS
+2026-06-25 10:36:06,931 - src.data_loader - WARNING - ASML.AS: No data available
+2026-06-25 10:36:07,040 - yfinance - ERROR - Failed to get ticker 'SAF.PA' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:07,042 - yfinance - ERROR - $SAF.PA: possibly delisted; no timezone found
+2026-06-25 10:36:07,049 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:07,050 - yfinance - ERROR - ['SAF.PA']: possibly delisted; no timezone found
+2026-06-25 10:36:07,055 - src.data_loader - WARNING - No data downloaded for SAF.PA
+2026-06-25 10:36:07,056 - src.data_loader - WARNING - SAF.PA: No data available
+2026-06-25 10:36:07,182 - yfinance - ERROR - Failed to get ticker 'SVOA.CH' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:07,184 - yfinance - ERROR - $SVOA.CH: possibly delisted; no timezone found
+2026-06-25 10:36:07,192 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:07,192 - yfinance - ERROR - ['SVOA.CH']: possibly delisted; no timezone found
+2026-06-25 10:36:07,199 - src.data_loader - WARNING - No data downloaded for SVOA.CH
+2026-06-25 10:36:07,199 - src.data_loader - WARNING - SVOA.CH: No data available
+2026-06-25 10:36:07,332 - yfinance - ERROR - Failed to get ticker 'RMS.L' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:07,334 - yfinance - ERROR - $RMS.L: possibly delisted; no timezone found
+2026-06-25 10:36:07,345 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:07,347 - yfinance - ERROR - ['RMS.L']: possibly delisted; no timezone found
+2026-06-25 10:36:07,352 - src.data_loader - WARNING - No data downloaded for RMS.L
+2026-06-25 10:36:07,352 - src.data_loader - WARNING - RMS.L: No data available
+2026-06-25 10:36:07,575 - yfinance - ERROR - Failed to get ticker 'NESN.SW' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:07,577 - yfinance - ERROR - $NESN.SW: possibly delisted; no timezone found
+2026-06-25 10:36:07,580 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:07,581 - yfinance - ERROR - ['NESN.SW']: possibly delisted; no timezone found
+2026-06-25 10:36:07,587 - src.data_loader - WARNING - No data downloaded for NESN.SW
+2026-06-25 10:36:07,588 - src.data_loader - WARNING - NESN.SW: No data available
+2026-06-25 10:36:07,823 - yfinance - ERROR - Failed to get ticker '0QQQ.DE' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:07,825 - yfinance - ERROR - $0QQQ.DE: possibly delisted; no timezone found
+2026-06-25 10:36:07,826 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:07,827 - yfinance - ERROR - ['0QQQ.DE']: possibly delisted; no timezone found
+2026-06-25 10:36:07,834 - src.data_loader - WARNING - No data downloaded for 0QQQ.DE
+2026-06-25 10:36:07,834 - src.data_loader - WARNING - 0QQQ.DE: No data available
+2026-06-25 10:36:08,064 - yfinance - ERROR - Failed to get ticker 'SIE.DE' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:08,066 - yfinance - ERROR - $SIE.DE: possibly delisted; no timezone found
+2026-06-25 10:36:08,067 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:08,068 - yfinance - ERROR - ['SIE.DE']: possibly delisted; no timezone found
+2026-06-25 10:36:08,072 - src.data_loader - WARNING - No data downloaded for SIE.DE
+2026-06-25 10:36:08,073 - src.data_loader - WARNING - SIE.DE: No data available
+2026-06-25 10:36:08,321 - yfinance - ERROR - Failed to get ticker 'AI.PA' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:08,323 - yfinance - ERROR - $AI.PA: possibly delisted; no timezone found
+2026-06-25 10:36:08,333 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:08,334 - yfinance - ERROR - ['AI.PA']: possibly delisted; no timezone found
+2026-06-25 10:36:08,342 - src.data_loader - WARNING - No data downloaded for AI.PA
+2026-06-25 10:36:08,342 - src.data_loader - WARNING - AI.PA: No data available
+2026-06-25 10:36:08,570 - yfinance - ERROR - Failed to get ticker 'NOKIA.HE' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:08,571 - yfinance - ERROR - $NOKIA.HE: possibly delisted; no timezone found
+2026-06-25 10:36:08,580 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:08,581 - yfinance - ERROR - ['NOKIA.HE']: possibly delisted; no timezone found
+2026-06-25 10:36:08,587 - src.data_loader - WARNING - No data downloaded for NOKIA.HE
+2026-06-25 10:36:08,588 - src.data_loader - WARNING - NOKIA.HE: No data available
+2026-06-25 10:36:08,590 - __main__ - INFO - Europe Summary:
+2026-06-25 10:36:08,591 - __main__ - INFO -   - Successful: 0
+2026-06-25 10:36:08,591 - __main__ - INFO -   - Errors: 0
+2026-06-25 10:36:08,591 - __main__ - INFO -   - Skipped: 10
+2026-06-25 10:36:08,604 - __main__ - INFO -   - Saved skipped to: results/combined\europe_skipped.csv
+2026-06-25 10:36:08,604 - __main__ - INFO - 
+Processing US...
+2026-06-25 10:36:08,851 - yfinance - ERROR - Failed to get ticker 'AAPL' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:08,853 - yfinance - ERROR - $AAPL: possibly delisted; no timezone found
+2026-06-25 10:36:08,857 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:08,857 - yfinance - ERROR - ['AAPL']: possibly delisted; no timezone found
+2026-06-25 10:36:08,868 - src.data_loader - WARNING - No data downloaded for AAPL
+2026-06-25 10:36:08,869 - src.data_loader - WARNING - AAPL: No data available
+2026-06-25 10:36:09,110 - yfinance - ERROR - Failed to get ticker 'MSFT' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:09,114 - yfinance - ERROR - $MSFT: possibly delisted; no timezone found
+2026-06-25 10:36:09,116 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:09,118 - yfinance - ERROR - ['MSFT']: possibly delisted; no timezone found
+2026-06-25 10:36:09,125 - src.data_loader - WARNING - No data downloaded for MSFT
+2026-06-25 10:36:09,125 - src.data_loader - WARNING - MSFT: No data available
+2026-06-25 10:36:09,390 - yfinance - ERROR - Failed to get ticker 'AMZN' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:09,392 - yfinance - ERROR - $AMZN: possibly delisted; no timezone found
+2026-06-25 10:36:09,399 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:09,400 - yfinance - ERROR - ['AMZN']: possibly delisted; no timezone found
+2026-06-25 10:36:09,409 - src.data_loader - WARNING - No data downloaded for AMZN
+2026-06-25 10:36:09,410 - src.data_loader - WARNING - AMZN: No data available
+2026-06-25 10:36:09,715 - yfinance - ERROR - Failed to get ticker 'GOOGL' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:09,718 - yfinance - ERROR - $GOOGL: possibly delisted; no timezone found
+2026-06-25 10:36:09,729 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:09,730 - yfinance - ERROR - ['GOOGL']: possibly delisted; no timezone found
+2026-06-25 10:36:09,737 - src.data_loader - WARNING - No data downloaded for GOOGL
+2026-06-25 10:36:09,738 - src.data_loader - WARNING - GOOGL: No data available
+2026-06-25 10:36:10,005 - yfinance - ERROR - Failed to get ticker 'NVDA' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:10,008 - yfinance - ERROR - $NVDA: possibly delisted; no timezone found
+2026-06-25 10:36:10,018 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:10,018 - yfinance - ERROR - ['NVDA']: possibly delisted; no timezone found
+2026-06-25 10:36:10,025 - src.data_loader - WARNING - No data downloaded for NVDA
+2026-06-25 10:36:10,026 - src.data_loader - WARNING - NVDA: No data available
+2026-06-25 10:36:10,300 - yfinance - ERROR - Failed to get ticker 'META' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:10,302 - yfinance - ERROR - $META: possibly delisted; no timezone found
+2026-06-25 10:36:10,306 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:10,306 - yfinance - ERROR - ['META']: possibly delisted; no timezone found
+2026-06-25 10:36:10,314 - src.data_loader - WARNING - No data downloaded for META
+2026-06-25 10:36:10,314 - src.data_loader - WARNING - META: No data available
+2026-06-25 10:36:10,554 - yfinance - ERROR - Failed to get ticker 'TSLA' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:10,556 - yfinance - ERROR - $TSLA: possibly delisted; no timezone found
+2026-06-25 10:36:10,563 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:10,565 - yfinance - ERROR - ['TSLA']: possibly delisted; no timezone found
+2026-06-25 10:36:10,573 - src.data_loader - WARNING - No data downloaded for TSLA
+2026-06-25 10:36:10,574 - src.data_loader - WARNING - TSLA: No data available
+2026-06-25 10:36:10,831 - yfinance - ERROR - Failed to get ticker 'BRK.B' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:10,835 - yfinance - ERROR - $BRK.B: possibly delisted; no timezone found
+2026-06-25 10:36:10,837 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:10,838 - yfinance - ERROR - ['BRK.B']: possibly delisted; no timezone found
+2026-06-25 10:36:10,855 - src.data_loader - WARNING - No data downloaded for BRK.B
+2026-06-25 10:36:10,857 - src.data_loader - WARNING - BRK.B: No data available
+2026-06-25 10:36:11,093 - yfinance - ERROR - Failed to get ticker 'JNJ' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:11,096 - yfinance - ERROR - $JNJ: possibly delisted; no timezone found
+2026-06-25 10:36:11,107 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:11,107 - yfinance - ERROR - ['JNJ']: possibly delisted; no timezone found
+2026-06-25 10:36:11,114 - src.data_loader - WARNING - No data downloaded for JNJ
+2026-06-25 10:36:11,115 - src.data_loader - WARNING - JNJ: No data available
+2026-06-25 10:36:11,347 - yfinance - ERROR - Failed to get ticker 'JPM' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:11,349 - yfinance - ERROR - $JPM: possibly delisted; no timezone found
+2026-06-25 10:36:11,355 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:11,356 - yfinance - ERROR - ['JPM']: possibly delisted; no timezone found
+2026-06-25 10:36:11,363 - src.data_loader - WARNING - No data downloaded for JPM
+2026-06-25 10:36:11,363 - src.data_loader - WARNING - JPM: No data available
+2026-06-25 10:36:11,596 - yfinance - ERROR - Failed to get ticker 'MV' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:11,622 - yfinance - ERROR - $MV: possibly delisted; no timezone found
+2026-06-25 10:36:11,630 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:11,631 - yfinance - ERROR - ['MV']: possibly delisted; no timezone found
+2026-06-25 10:36:11,637 - src.data_loader - WARNING - No data downloaded for MV
+2026-06-25 10:36:11,638 - src.data_loader - WARNING - MV: No data available
+2026-06-25 10:36:11,866 - yfinance - ERROR - Failed to get ticker 'PM' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:11,869 - yfinance - ERROR - $PM: possibly delisted; no timezone found
+2026-06-25 10:36:11,875 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:11,877 - yfinance - ERROR - ['PM']: possibly delisted; no timezone found
+2026-06-25 10:36:11,884 - src.data_loader - WARNING - No data downloaded for PM
+2026-06-25 10:36:11,884 - src.data_loader - WARNING - PM: No data available
+2026-06-25 10:36:12,115 - yfinance - ERROR - Failed to get ticker 'KO' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:12,117 - yfinance - ERROR - $KO: possibly delisted; no timezone found
+2026-06-25 10:36:12,128 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:12,129 - yfinance - ERROR - ['KO']: possibly delisted; no timezone found
+2026-06-25 10:36:12,133 - src.data_loader - WARNING - No data downloaded for KO
+2026-06-25 10:36:12,133 - src.data_loader - WARNING - KO: No data available
+2026-06-25 10:36:12,351 - yfinance - ERROR - Failed to get ticker 'WMT' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:12,354 - yfinance - ERROR - $WMT: possibly delisted; no timezone found
+2026-06-25 10:36:12,365 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:12,365 - yfinance - ERROR - ['WMT']: possibly delisted; no timezone found
+2026-06-25 10:36:12,372 - src.data_loader - WARNING - No data downloaded for WMT
+2026-06-25 10:36:12,372 - src.data_loader - WARNING - WMT: No data available
+2026-06-25 10:36:12,566 - yfinance - ERROR - Failed to get ticker 'MCD' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:12,569 - yfinance - ERROR - $MCD: possibly delisted; no timezone found
+2026-06-25 10:36:12,580 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:12,581 - yfinance - ERROR - ['MCD']: possibly delisted; no timezone found
+2026-06-25 10:36:12,592 - src.data_loader - WARNING - No data downloaded for MCD
+2026-06-25 10:36:12,593 - src.data_loader - WARNING - MCD: No data available
+2026-06-25 10:36:13,381 - yfinance - ERROR - Failed to get ticker 'XOM' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:13,383 - yfinance - ERROR - $XOM: possibly delisted; no timezone found
+2026-06-25 10:36:13,392 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:13,402 - yfinance - ERROR - ['XOM']: possibly delisted; no timezone found
+2026-06-25 10:36:13,428 - src.data_loader - WARNING - No data downloaded for XOM
+2026-06-25 10:36:13,432 - src.data_loader - WARNING - XOM: No data available
+2026-06-25 10:36:14,124 - yfinance - ERROR - Failed to get ticker 'BAC' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:14,126 - yfinance - ERROR - $BAC: possibly delisted; no timezone found
+2026-06-25 10:36:14,135 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:14,136 - yfinance - ERROR - ['BAC']: possibly delisted; no timezone found
+2026-06-25 10:36:14,142 - src.data_loader - WARNING - No data downloaded for BAC
+2026-06-25 10:36:14,144 - src.data_loader - WARNING - BAC: No data available
+2026-06-25 10:36:14,836 - yfinance - ERROR - Failed to get ticker 'PG' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:14,837 - yfinance - ERROR - $PG: possibly delisted; no timezone found
+2026-06-25 10:36:14,845 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:14,845 - yfinance - ERROR - ['PG']: possibly delisted; no timezone found
+2026-06-25 10:36:14,849 - src.data_loader - WARNING - No data downloaded for PG
+2026-06-25 10:36:14,849 - src.data_loader - WARNING - PG: No data available
+2026-06-25 10:36:15,536 - yfinance - ERROR - Failed to get ticker 'CVX' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:15,537 - yfinance - ERROR - $CVX: possibly delisted; no timezone found
+2026-06-25 10:36:15,546 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:15,547 - yfinance - ERROR - ['CVX']: possibly delisted; no timezone found
+2026-06-25 10:36:15,550 - src.data_loader - WARNING - No data downloaded for CVX
+2026-06-25 10:36:15,551 - src.data_loader - WARNING - CVX: No data available
+2026-06-25 10:36:16,248 - yfinance - ERROR - Failed to get ticker 'AXP' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:16,249 - yfinance - ERROR - $AXP: possibly delisted; no timezone found
+2026-06-25 10:36:16,255 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:16,256 - yfinance - ERROR - ['AXP']: possibly delisted; no timezone found
+2026-06-25 10:36:16,258 - src.data_loader - WARNING - No data downloaded for AXP
+2026-06-25 10:36:16,260 - src.data_loader - WARNING - AXP: No data available
+2026-06-25 10:36:16,264 - __main__ - INFO - US Summary:
+2026-06-25 10:36:16,264 - __main__ - INFO -   - Successful: 0
+2026-06-25 10:36:16,265 - __main__ - INFO -   - Errors: 0
+2026-06-25 10:36:16,265 - __main__ - INFO -   - Skipped: 20
+2026-06-25 10:36:16,273 - __main__ - INFO -   - Saved skipped to: results/combined\us_skipped.csv
+2026-06-25 10:36:16,273 - __main__ - INFO - 
+================================================================================
+2026-06-25 10:36:16,273 - __main__ - INFO - STEP 3: AGGREGATING RESULTS
+2026-06-25 10:36:16,274 - __main__ - INFO - ================================================================================
+2026-06-25 10:36:16,274 - __main__ - ERROR - No results to process!

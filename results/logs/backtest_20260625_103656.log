@@ -1,0 +1,94 @@
+2026-06-25 10:36:56,604 - main - INFO - ================================================================================
+2026-06-25 10:36:56,605 - main - INFO - TRADING STRATEGY BACKTESTING SYSTEM
+2026-06-25 10:36:56,605 - main - INFO - ================================================================================
+2026-06-25 10:36:56,605 - main - INFO - Start time: 2026-06-25 10:36:56.605482
+2026-06-25 10:36:56,605 - main - INFO - Backtest period: 2021-06-26 to 2026-06-25
+2026-06-25 10:36:56,605 - main - INFO - Strategies: Volume, MACD, LSTM_Bollinger, Ichimoku
+2026-06-25 10:36:56,606 - main - INFO - Max workers: 4
+2026-06-25 10:36:56,606 - main - INFO - 
+================================================================================
+2026-06-25 10:36:56,606 - main - INFO - STEP 1: UNIVERSE CREATION
+2026-06-25 10:36:56,606 - main - INFO - ================================================================================
+2026-06-25 10:36:56,613 - src.universe - INFO - Loaded 1 stocks for Asia
+2026-06-25 10:36:56,617 - src.universe - INFO - Loaded 1 stocks for Europe
+2026-06-25 10:36:56,620 - src.universe - INFO - Loaded 5 stocks for US
+2026-06-25 10:36:56,621 - main - INFO - Asia: 1 stocks loaded
+2026-06-25 10:36:56,621 - main - INFO - Europe: 1 stocks loaded
+2026-06-25 10:36:56,621 - main - INFO - US: 5 stocks loaded
+2026-06-25 10:36:56,621 - main - INFO - 
+================================================================================
+2026-06-25 10:36:56,621 - main - INFO - STEP 2: PARALLEL BACKTESTING
+2026-06-25 10:36:56,621 - main - INFO - ================================================================================
+2026-06-25 10:36:56,621 - main - INFO - 
+Processing Asia...
+2026-06-25 10:36:56,895 - yfinance - ERROR - Failed to get ticker '9999.T' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:57,170 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:57,171 - yfinance - ERROR - ['9999.T']: CertificateVerifyError('Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-06-25 10:36:57,185 - src.data_loader - WARNING - No data downloaded for 9999.T
+2026-06-25 10:36:57,185 - src.data_loader - WARNING - 9999.T: No data available
+2026-06-25 10:36:57,192 - main - INFO - Asia Summary:
+2026-06-25 10:36:57,193 - main - INFO -   - Successful: 0
+2026-06-25 10:36:57,193 - main - INFO -   - Errors: 0
+2026-06-25 10:36:57,193 - main - INFO -   - Skipped: 1
+2026-06-25 10:36:57,208 - main - INFO -   - Saved skipped to: results/combined\asia_skipped.csv
+2026-06-25 10:36:57,209 - main - INFO - 
+Processing Europe...
+2026-06-25 10:36:57,470 - yfinance - ERROR - Failed to get ticker 'SAP' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:57,713 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:57,714 - yfinance - ERROR - ['SAP']: CertificateVerifyError('Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-06-25 10:36:57,722 - src.data_loader - WARNING - No data downloaded for SAP
+2026-06-25 10:36:57,723 - src.data_loader - WARNING - SAP: No data available
+2026-06-25 10:36:57,726 - main - INFO - Europe Summary:
+2026-06-25 10:36:57,726 - main - INFO -   - Successful: 0
+2026-06-25 10:36:57,727 - main - INFO -   - Errors: 0
+2026-06-25 10:36:57,727 - main - INFO -   - Skipped: 1
+2026-06-25 10:36:57,738 - main - INFO -   - Saved skipped to: results/combined\europe_skipped.csv
+2026-06-25 10:36:57,738 - main - INFO - 
+Processing US...
+2026-06-25 10:36:57,997 - yfinance - ERROR - Failed to get ticker 'AAPL' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:57,999 - yfinance - ERROR - $AAPL: possibly delisted; no timezone found
+2026-06-25 10:36:58,004 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:58,004 - yfinance - ERROR - ['AAPL']: possibly delisted; no timezone found
+2026-06-25 10:36:58,015 - src.data_loader - WARNING - No data downloaded for AAPL
+2026-06-25 10:36:58,015 - src.data_loader - WARNING - AAPL: No data available
+2026-06-25 10:36:58,253 - yfinance - ERROR - Failed to get ticker 'MSFT' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:58,254 - yfinance - ERROR - $MSFT: possibly delisted; no timezone found
+2026-06-25 10:36:58,255 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:58,255 - yfinance - ERROR - ['MSFT']: possibly delisted; no timezone found
+2026-06-25 10:36:58,259 - src.data_loader - WARNING - No data downloaded for MSFT
+2026-06-25 10:36:58,259 - src.data_loader - WARNING - MSFT: No data available
+2026-06-25 10:36:58,554 - yfinance - ERROR - Failed to get ticker 'GOOGL' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:58,556 - yfinance - ERROR - $GOOGL: possibly delisted; no timezone found
+2026-06-25 10:36:58,558 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:58,558 - yfinance - ERROR - ['GOOGL']: possibly delisted; no timezone found
+2026-06-25 10:36:58,580 - src.data_loader - WARNING - No data downloaded for GOOGL
+2026-06-25 10:36:58,581 - src.data_loader - WARNING - GOOGL: No data available
+2026-06-25 10:36:58,794 - yfinance - ERROR - Failed to get ticker 'AMZN' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:58,795 - yfinance - ERROR - $AMZN: possibly delisted; no timezone found
+2026-06-25 10:36:58,800 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:58,800 - yfinance - ERROR - ['AMZN']: possibly delisted; no timezone found
+2026-06-25 10:36:58,804 - src.data_loader - WARNING - No data downloaded for AMZN
+2026-06-25 10:36:58,805 - src.data_loader - WARNING - AMZN: No data available
+2026-06-25 10:36:59,041 - yfinance - ERROR - Failed to get ticker 'NVDA' reason: Failed to perform, curl: (60) SSL certificate problem: self signed certificate in certificate chain. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-06-25 10:36:59,041 - yfinance - ERROR - $NVDA: possibly delisted; no timezone found
+2026-06-25 10:36:59,045 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 10:36:59,045 - yfinance - ERROR - ['NVDA']: possibly delisted; no timezone found
+2026-06-25 10:36:59,054 - src.data_loader - WARNING - No data downloaded for NVDA
+2026-06-25 10:36:59,054 - src.data_loader - WARNING - NVDA: No data available
+2026-06-25 10:36:59,056 - main - INFO - US Summary:
+2026-06-25 10:36:59,056 - main - INFO -   - Successful: 0
+2026-06-25 10:36:59,056 - main - INFO -   - Errors: 0
+2026-06-25 10:36:59,056 - main - INFO -   - Skipped: 5
+2026-06-25 10:36:59,069 - main - INFO -   - Saved skipped to: results/combined\us_skipped.csv
+2026-06-25 10:36:59,069 - main - INFO - 
+================================================================================
+2026-06-25 10:36:59,069 - main - INFO - STEP 3: AGGREGATING RESULTS
+2026-06-25 10:36:59,070 - main - INFO - ================================================================================
+2026-06-25 10:36:59,070 - main - ERROR - No results to process!

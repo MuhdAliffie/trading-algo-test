@@ -1,0 +1,556 @@
+2026-06-25 15:01:31,679 - __main__ - INFO - ================================================================================
+2026-06-25 15:01:31,681 - __main__ - INFO - TRADING STRATEGY BACKTESTING SYSTEM
+2026-06-25 15:01:31,682 - __main__ - INFO - ================================================================================
+2026-06-25 15:01:31,682 - __main__ - INFO - Start time: 2026-06-25 15:01:31.682739
+2026-06-25 15:01:31,683 - __main__ - INFO - Backtest period: 2021-06-26 to 2026-06-25
+2026-06-25 15:01:31,684 - __main__ - INFO - Strategies: RSI, ADX_DI, ATR_Breakout, SMA_Crossover, EMA_Crossover, MACD, Bollinger_Mean_Reversion, Stochastic, CCI, MFI, OBV, VWAP, Supertrend, Parabolic_SAR, Williams_R, ROC_Momentum, Donchian_Channel, Keltner_Channel
+2026-06-25 15:01:31,684 - __main__ - INFO - Max workers: 4
+2026-06-25 15:01:31,684 - __main__ - INFO - 
+================================================================================
+2026-06-25 15:01:31,685 - __main__ - INFO - STEP 1: UNIVERSE CREATION
+2026-06-25 15:01:31,685 - __main__ - INFO - ================================================================================
+2026-06-25 15:01:31,701 - src.universe - INFO - Universe file is valid: data/universe/asia_top100.csv (100 rows)
+2026-06-25 15:01:31,709 - src.universe - INFO - Universe file is valid: data/universe/europe_top100.csv (100 rows)
+2026-06-25 15:01:31,717 - src.universe - INFO - Universe file is valid: data/universe/us_top100.csv (100 rows)
+2026-06-25 15:01:31,724 - src.universe - INFO - Universe file is valid: data/universe/asia_top100.csv (100 rows)
+2026-06-25 15:01:31,730 - src.universe - INFO - Universe file is valid: data/universe/europe_top100.csv (100 rows)
+2026-06-25 15:01:31,737 - src.universe - INFO - Universe file is valid: data/universe/us_top100.csv (100 rows)
+2026-06-25 15:01:31,744 - src.universe - INFO - Loaded 100 stocks for Asia
+2026-06-25 15:01:31,750 - src.universe - INFO - Loaded 100 stocks for Europe
+2026-06-25 15:01:31,759 - src.universe - INFO - Loaded 100 stocks for US
+2026-06-25 15:01:31,760 - __main__ - INFO - Asia: 100 stocks loaded
+2026-06-25 15:01:31,760 - __main__ - INFO - Europe: 100 stocks loaded
+2026-06-25 15:01:31,760 - __main__ - INFO - US: 100 stocks loaded
+2026-06-25 15:01:31,761 - __main__ - INFO - 
+================================================================================
+2026-06-25 15:01:31,761 - __main__ - INFO - STEP 2: PARALLEL BACKTESTING
+2026-06-25 15:01:31,761 - __main__ - INFO - ================================================================================
+2026-06-25 15:01:31,762 - __main__ - INFO - 
+Processing Asia...
+Running backtests:   0%|          | 0/100 [00:00<?, ?it/s]2026-06-25 15:01:33,842 - src.data_loader - INFO - 9984.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:01:33,856 - src.data_loader - INFO - 8306.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:01:33,869 - src.data_loader - INFO - 7203.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:01:33,885 - src.data_loader - INFO - 6758.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:   1%|1         | 1/100 [00:27<45:21, 27.49s/it]Running backtests:   2%|2         | 2/100 [00:27<18:54, 11.58s/it]Running backtests:   4%|4         | 4/100 [00:28<07:06,  4.45s/it]2026-06-25 15:02:00,183 - src.data_loader - INFO - 6861.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:02:00,483 - src.data_loader - INFO - 6098.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:02:00,511 - src.data_loader - INFO - 4063.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:02:00,543 - src.data_loader - INFO - 6501.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:   5%|5         | 5/100 [00:45<13:13,  8.35s/it]2026-06-25 15:02:28,417 - src.data_loader - INFO - 8035.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:   6%|6         | 6/100 [01:00<16:22, 10.46s/it]Running backtests:   7%|7         | 7/100 [01:01<11:27,  7.39s/it]Running backtests:   8%|8         | 8/100 [01:03<09:04,  5.92s/it]2026-06-25 15:02:35,435 - src.data_loader - INFO - 7974.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:02:35,490 - src.data_loader - INFO - 9432.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:02:38,415 - src.data_loader - INFO - 9983.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:   9%|9         | 9/100 [01:24<15:41, 10.34s/it]2026-06-25 15:03:05,195 - src.data_loader - INFO - 4519.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  10%|#         | 10/100 [01:35<15:58, 10.65s/it]Running backtests:  11%|#1        | 11/100 [01:36<11:26,  7.72s/it]Running backtests:  12%|#2        | 12/100 [01:39<09:12,  6.28s/it]2026-06-25 15:03:11,150 - src.data_loader - INFO - 4568.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:03:11,166 - src.data_loader - INFO - 8058.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:03:13,719 - src.data_loader - INFO - 6367.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  13%|#3        | 13/100 [02:08<19:04, 13.16s/it]2026-06-25 15:03:50,925 - src.data_loader - INFO - 4502.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  14%|#4        | 14/100 [02:24<20:17, 14.16s/it]Running backtests:  15%|#5        | 15/100 [02:25<14:11, 10.01s/it]Running backtests:  16%|#6        | 16/100 [02:28<11:15,  8.04s/it]2026-06-25 15:04:00,601 - src.data_loader - INFO - 6902.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:04:00,613 - src.data_loader - INFO - 8001.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:04:04,186 - src.data_loader - INFO - 8766.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  17%|#7        | 17/100 [02:59<20:25, 14.77s/it]2026-06-25 15:04:43,845 - src.data_loader - INFO - 8316.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  18%|#8        | 18/100 [03:13<19:47, 14.48s/it]Running backtests:  19%|#9        | 19/100 [03:14<14:11, 10.51s/it]2026-06-25 15:04:50,583 - src.data_loader - INFO - 7267.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:04:51,018 - src.data_loader - INFO - 9433.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  20%|##        | 20/100 [03:24<13:47, 10.34s/it]2026-06-25 15:04:58,077 - src.data_loader - INFO - 6954.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  21%|##1       | 21/100 [03:53<21:06, 16.04s/it]2026-06-25 15:05:37,497 - src.data_loader - INFO - 6981.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  22%|##2       | 22/100 [04:05<19:21, 14.89s/it]Running backtests:  24%|##4       | 24/100 [04:09<11:15,  8.88s/it]2026-06-25 15:05:41,347 - src.data_loader - INFO - 7751.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:05:41,980 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 9613.T"}}}
+2026-06-25 15:05:44,512 - yfinance - ERROR - $9613.T: possibly delisted; no timezone found
+2026-06-25 15:05:44,515 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 15:05:44,520 - yfinance - ERROR - ['9613.T']: possibly delisted; no timezone found
+2026-06-25 15:05:44,552 - src.data_loader - INFO - 3382.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:05:44,590 - src.data_loader - WARNING - No data downloaded for 9613.T
+2026-06-25 15:05:44,592 - src.data_loader - WARNING - 9613.T: No data available
+Running backtests:  25%|##5       | 25/100 [04:12<09:22,  7.50s/it]2026-06-25 15:05:50,947 - src.data_loader - INFO - 7741.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  26%|##6       | 26/100 [04:33<13:25, 10.89s/it]2026-06-25 15:06:13,797 - src.data_loader - INFO - 8411.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  27%|##7       | 27/100 [04:47<14:17, 11.75s/it]Running backtests:  28%|##8       | 28/100 [04:56<13:07, 10.93s/it]2026-06-25 15:06:28,302 - src.data_loader - INFO - 7269.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:06:34,270 - src.data_loader - INFO - 6702.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  29%|##9       | 29/100 [05:11<14:16, 12.06s/it]2026-06-25 15:06:51,026 - src.data_loader - INFO - 6503.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  30%|###       | 30/100 [05:25<14:59, 12.85s/it]2026-06-25 15:07:05,835 - src.data_loader - INFO - 4503.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  31%|###1      | 31/100 [05:39<14:57, 13.01s/it]Running backtests:  32%|###2      | 32/100 [05:41<10:59,  9.71s/it]2026-06-25 15:07:14,646 - src.data_loader - INFO - 8053.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:07:18,915 - src.data_loader - INFO - 9020.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  33%|###3      | 33/100 [05:52<11:34, 10.37s/it]2026-06-25 15:07:32,227 - src.data_loader - INFO - 5108.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  34%|###4      | 34/100 [06:08<13:00, 11.82s/it]2026-06-25 15:07:50,220 - src.data_loader - INFO - 8801.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  35%|###5      | 35/100 [06:24<14:10, 13.08s/it]Running backtests:  36%|###6      | 36/100 [06:25<10:09,  9.52s/it]2026-06-25 15:08:00,535 - src.data_loader - INFO - 9022.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:08:01,267 - src.data_loader - INFO - 9202.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  37%|###7      | 37/100 [06:34<09:51,  9.38s/it]2026-06-25 15:08:13,402 - src.data_loader - INFO - 4901.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  38%|###8      | 38/100 [06:52<12:29, 12.08s/it]2026-06-25 15:08:35,698 - src.data_loader - INFO - 6762.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  39%|###9      | 39/100 [07:12<14:33, 14.33s/it]Running backtests:  40%|####      | 40/100 [07:15<10:49, 10.82s/it]2026-06-25 15:08:50,527 - src.data_loader - INFO - 6752.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:08:52,926 - src.data_loader - INFO - 6301.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  41%|####1     | 41/100 [07:35<13:31, 13.75s/it]2026-06-25 15:09:18,025 - src.data_loader - INFO - 7201.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  42%|####2     | 42/100 [08:02<16:56, 17.53s/it]2026-06-25 15:09:44,802 - src.data_loader - INFO - 7202.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  43%|####3     | 43/100 [08:24<17:57, 18.90s/it]Running backtests:  44%|####4     | 44/100 [08:25<12:49, 13.75s/it]2026-06-25 15:10:00,059 - src.data_loader - INFO - 7733.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:10:02,662 - src.data_loader - INFO - 4543.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  45%|####5     | 45/100 [08:48<15:02, 16.40s/it]2026-06-25 15:10:26,858 - src.data_loader - INFO - 1925.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  46%|####6     | 46/100 [09:06<15:18, 17.02s/it]2026-06-25 15:10:49,226 - src.data_loader - INFO - 2502.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  47%|####6     | 47/100 [09:27<16:00, 18.13s/it]Running backtests:  48%|####8     | 48/100 [09:29<11:30, 13.28s/it]2026-06-25 15:11:04,898 - src.data_loader - INFO - 2503.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:11:06,280 - src.data_loader - INFO - 2914.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  49%|####9     | 49/100 [09:51<13:30, 15.89s/it]2026-06-25 15:11:33,827 - src.data_loader - INFO - 2802.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  50%|#####     | 50/100 [10:15<15:21, 18.43s/it]2026-06-25 15:11:57,060 - src.data_loader - INFO - 2801.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  51%|#####1    | 51/100 [10:34<15:08, 18.54s/it]Running backtests:  52%|#####2    | 52/100 [10:37<11:05, 13.87s/it]2026-06-25 15:12:10,499 - src.data_loader - INFO - 2269.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:12:15,261 - src.data_loader - INFO - 2282.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  53%|#####3    | 53/100 [11:06<14:22, 18.34s/it]2026-06-25 15:12:49,799 - src.data_loader - INFO - 2871.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  54%|#####4    | 54/100 [11:20<12:57, 16.90s/it]2026-06-25 15:13:00,095 - src.data_loader - INFO - 3861.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  55%|#####5    | 55/100 [11:34<12:05, 16.12s/it]2026-06-25 15:13:13,708 - src.data_loader - INFO - 3402.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  56%|#####6    | 56/100 [11:43<10:21, 14.13s/it]2026-06-25 15:13:21,700 - src.data_loader - INFO - 3407.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  57%|#####6    | 57/100 [12:19<14:42, 20.52s/it]Running backtests:  58%|#####8    | 58/100 [12:26<11:40, 16.68s/it]2026-06-25 15:13:59,949 - src.data_loader - INFO - 4005.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:14:05,546 - src.data_loader - INFO - 4042.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  59%|#####8    | 59/100 [12:39<10:33, 15.45s/it]2026-06-25 15:14:17,540 - src.data_loader - INFO - 4043.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  60%|######    | 60/100 [12:55<10:19, 15.48s/it]2026-06-25 15:14:34,865 - src.data_loader - INFO - 4183.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  61%|######1   | 61/100 [13:25<13:01, 20.04s/it]Running backtests:  62%|######2   | 62/100 [13:30<09:47, 15.45s/it]2026-06-25 15:15:05,285 - src.data_loader - INFO - 4188.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:15:06,440 - src.data_loader - INFO - 4208.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  63%|######3   | 63/100 [13:44<09:19, 15.13s/it]2026-06-25 15:15:25,699 - src.data_loader - INFO - 4452.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  64%|######4   | 64/100 [14:04<09:48, 16.34s/it]2026-06-25 15:15:44,643 - src.data_loader - INFO - 4631.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  65%|######5   | 65/100 [14:34<11:55, 20.43s/it]Running backtests:  66%|######6   | 66/100 [14:37<08:45, 15.46s/it]2026-06-25 15:16:13,661 - src.data_loader - INFO - 4902.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:16:15,498 - src.data_loader - INFO - 5019.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  67%|######7   | 67/100 [14:51<08:08, 14.79s/it]2026-06-25 15:16:26,489 - src.data_loader - INFO - 5020.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  68%|######8   | 68/100 [15:13<09:01, 16.93s/it]2026-06-25 15:16:56,131 - src.data_loader - INFO - 5101.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  69%|######9   | 69/100 [15:38<10:06, 19.58s/it]2026-06-25 15:17:17,429 - src.data_loader - INFO - 5201.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  70%|#######   | 70/100 [15:47<08:13, 16.43s/it]2026-06-25 15:17:24,960 - src.data_loader - INFO - 5202.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  71%|#######1  | 71/100 [15:55<06:43, 13.93s/it]2026-06-25 15:17:32,840 - src.data_loader - INFO - 5214.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  72%|#######2  | 72/100 [16:27<08:54, 19.09s/it]2026-06-25 15:18:09,094 - src.data_loader - INFO - 5233.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  73%|#######3  | 73/100 [16:43<08:15, 18.33s/it]2026-06-25 15:18:21,074 - src.data_loader - INFO - 5301.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  74%|#######4  | 74/100 [16:58<07:28, 17.23s/it]Running backtests:  75%|#######5  | 75/100 [17:02<05:29, 13.18s/it]2026-06-25 15:18:34,120 - src.data_loader - INFO - 5332.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:18:38,933 - src.data_loader - INFO - 5333.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  76%|#######6  | 76/100 [17:38<08:04, 20.18s/it]Running backtests:  77%|#######7  | 77/100 [17:48<06:30, 16.96s/it]2026-06-25 15:19:22,284 - src.data_loader - INFO - 5401.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:19:26,680 - src.data_loader - INFO - 5406.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  78%|#######8  | 78/100 [18:03<06:04, 16.57s/it]Running backtests:  79%|#######9  | 79/100 [18:06<04:19, 12.34s/it]2026-06-25 15:19:39,630 - src.data_loader - INFO - 5411.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:19:43,713 - src.data_loader - INFO - 5631.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  80%|########  | 80/100 [18:55<07:49, 23.47s/it]Running backtests:  81%|########1 | 81/100 [18:56<05:18, 16.78s/it]2026-06-25 15:20:34,692 - src.data_loader - INFO - 5703.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:20:36,564 - src.data_loader - INFO - 5706.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  82%|########2 | 82/100 [19:15<05:10, 17.28s/it]Running backtests:  83%|########2 | 83/100 [19:16<03:31, 12.45s/it]2026-06-25 15:20:49,502 - src.data_loader - INFO - 5711.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:20:55,771 - src.data_loader - INFO - 5713.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  84%|########4 | 84/100 [20:06<06:20, 23.80s/it]Running backtests:  85%|########5 | 85/100 [20:12<04:37, 18.51s/it]2026-06-25 15:21:47,777 - src.data_loader - INFO - 5801.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:21:52,756 - src.data_loader - INFO - 5802.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  86%|########6 | 86/100 [20:31<04:20, 18.59s/it]Running backtests:  87%|########7 | 87/100 [20:31<02:50, 13.10s/it]2026-06-25 15:22:07,982 - src.data_loader - INFO - 5901.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:22:09,681 - src.data_loader - INFO - 5803.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  88%|########8 | 88/100 [21:18<04:39, 23.28s/it]Running backtests:  89%|########9 | 89/100 [21:27<03:28, 18.93s/it]2026-06-25 15:23:01,770 - src.data_loader - INFO - 6113.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:23:07,578 - src.data_loader - INFO - 6302.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  90%|######### | 90/100 [21:49<03:16, 19.67s/it]Running backtests:  91%|#########1| 91/100 [21:57<02:26, 16.27s/it]2026-06-25 15:23:29,513 - src.data_loader - INFO - 6305.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:23:36,421 - src.data_loader - INFO - 6326.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  92%|#########2| 92/100 [22:44<03:25, 25.65s/it]Running backtests:  93%|#########3| 93/100 [22:54<02:26, 20.93s/it]2026-06-25 15:24:26,954 - src.data_loader - INFO - 6361.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:24:34,129 - src.data_loader - INFO - 6471.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  94%|#########3| 94/100 [23:06<01:49, 18.17s/it]2026-06-25 15:24:46,278 - src.data_loader - INFO - 6472.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  95%|#########5| 95/100 [23:20<01:23, 16.76s/it]2026-06-25 15:24:58,100 - src.data_loader - INFO - 6473.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  96%|#########6| 96/100 [23:59<01:33, 23.45s/it]2026-06-25 15:25:40,364 - src.data_loader - INFO - 6479.T: Downloaded 1220 rows from 2021-06-26 to 2026-06-25
+Running backtests:  97%|#########7| 97/100 [24:20<01:08, 22.81s/it]Running backtests:  98%|#########8| 98/100 [24:32<00:39, 19.65s/it]Running backtests:  99%|#########9| 99/100 [24:49<00:18, 18.90s/it]Running backtests: 100%|##########| 100/100 [25:03<00:00, 17.39s/it]Running backtests: 100%|##########| 100/100 [25:03<00:00, 15.04s/it]
+2026-06-25 15:27:01,924 - __main__ - INFO - Asia Summary:
+2026-06-25 15:27:01,928 - __main__ - INFO -   - Successful: 99
+2026-06-25 15:27:01,937 - __main__ - INFO -   - Errors: 0
+2026-06-25 15:27:01,938 - __main__ - INFO -   - Skipped: 1
+2026-06-25 15:27:02,037 - __main__ - INFO -   - Saved skipped to: results/combined\asia_skipped.csv
+2026-06-25 15:27:02,038 - __main__ - INFO - 
+Processing Europe...
+Running backtests:   0%|          | 0/100 [00:00<?, ?it/s]2026-06-25 15:27:04,567 - src.data_loader - INFO - AAF.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:27:04,600 - src.data_loader - INFO - ADM.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:27:04,706 - src.data_loader - INFO - III.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:27:04,794 - src.data_loader - INFO - ABDN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:   1%|1         | 1/100 [01:31<2:31:07, 91.59s/it]Running backtests:   2%|2         | 2/100 [01:32<1:02:29, 38.26s/it]Running backtests:   3%|3         | 3/100 [01:35<35:55, 22.22s/it]  2026-06-25 15:28:37,802 - src.data_loader - INFO - ALW.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:28:37,868 - src.data_loader - INFO - AAL.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:28:41,484 - src.data_loader - INFO - ABF.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:28:42,001 - src.data_loader - INFO - ANTO.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:   5%|5         | 5/100 [02:48<47:44, 30.15s/it]Running backtests:   6%|6         | 6/100 [02:52<35:40, 22.77s/it]2026-06-25 15:29:58,378 - src.data_loader - INFO - AZN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:30:02,155 - src.data_loader - INFO - AUTO.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:   7%|7         | 7/100 [03:07<31:39, 20.42s/it]Running backtests:   8%|8         | 8/100 [03:07<22:17, 14.54s/it]2026-06-25 15:30:15,671 - src.data_loader - INFO - BAB.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:30:16,077 - src.data_loader - INFO - AV.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:   9%|9         | 9/100 [04:13<45:06, 29.74s/it]Running backtests:  10%|#         | 10/100 [04:18<33:37, 22.42s/it]2026-06-25 15:31:24,130 - src.data_loader - INFO - BA.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:31:27,659 - src.data_loader - INFO - BARC.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  11%|#1        | 11/100 [04:39<32:30, 21.92s/it]Running backtests:  12%|#2        | 12/100 [04:40<23:06, 15.75s/it]2026-06-25 15:31:48,766 - src.data_loader - INFO - BTRW.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:31:49,288 - src.data_loader - INFO - BEZ.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  13%|#3        | 13/100 [05:45<44:01, 30.37s/it]Running backtests:  14%|#4        | 14/100 [05:45<30:43, 21.43s/it]2026-06-25 15:32:53,582 - src.data_loader - INFO - BATS.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:32:54,398 - src.data_loader - INFO - BP.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  15%|#5        | 15/100 [06:08<30:48, 21.75s/it]Running backtests:  16%|#6        | 16/100 [06:10<22:19, 15.95s/it]2026-06-25 15:33:18,079 - src.data_loader - INFO - BLND.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:33:18,673 - src.data_loader - INFO - BT-A.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  17%|#7        | 17/100 [07:14<41:44, 30.18s/it]Running backtests:  18%|#8        | 18/100 [07:15<29:12, 21.37s/it]2026-06-25 15:34:23,634 - src.data_loader - INFO - BRBY.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:34:23,979 - src.data_loader - INFO - BNZL.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  19%|#9        | 19/100 [07:41<30:42, 22.75s/it]Running backtests:  20%|##        | 20/100 [07:41<21:35, 16.19s/it]2026-06-25 15:34:49,468 - src.data_loader - INFO - CCEP.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:34:49,469 - src.data_loader - INFO - CNA.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  21%|##1       | 21/100 [08:41<38:30, 29.25s/it]2026-06-25 15:35:49,515 - src.data_loader - INFO - CCH.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:35:50,287 - src.data_loader - INFO - CPG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  23%|##3       | 23/100 [09:09<28:31, 22.23s/it]Running backtests:  24%|##4       | 24/100 [09:11<21:45, 17.18s/it]2026-06-25 15:36:17,729 - src.data_loader - INFO - CCC.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:36:18,962 - src.data_loader - INFO - CTEC.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  25%|##5       | 25/100 [10:08<34:27, 27.57s/it]Running backtests:  26%|##6       | 26/100 [10:08<24:55, 20.21s/it]2026-06-25 15:37:15,522 - src.data_loader - INFO - DCC.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:37:15,641 - src.data_loader - INFO - CRDA.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  27%|##7       | 27/100 [10:20<21:42, 17.84s/it]Running backtests:  28%|##8       | 28/100 [10:22<15:59, 13.33s/it]2026-06-25 15:37:27,378 - src.data_loader - INFO - DGE.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:37:28,368 - src.data_loader - INFO - DPLM.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  29%|##9       | 29/100 [10:57<23:14, 19.65s/it]Running backtests:  30%|###       | 30/100 [11:01<17:21, 14.88s/it]2026-06-25 15:38:06,380 - src.data_loader - INFO - EDV.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:38:08,905 - src.data_loader - INFO - ENT.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  31%|###1      | 31/100 [11:36<24:09, 21.01s/it]2026-06-25 15:38:43,946 - src.data_loader - INFO - EXPN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  32%|###2      | 32/100 [11:43<18:54, 16.68s/it]2026-06-25 15:38:53,307 - src.data_loader - INFO - FCIT.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  33%|###3      | 33/100 [12:27<27:41, 24.80s/it]Running backtests:  34%|###4      | 34/100 [12:31<20:25, 18.56s/it]2026-06-25 15:39:35,149 - src.data_loader - INFO - FRES.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:39:37,483 - src.data_loader - INFO - GAW.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  35%|###5      | 35/100 [13:06<25:33, 23.59s/it]2026-06-25 15:40:17,350 - src.data_loader - INFO - GLEN.L: Downloaded 1257 rows from 2021-06-26 to 2026-06-25
+Running backtests:  36%|###6      | 36/100 [13:17<21:08, 19.82s/it]2026-06-25 15:40:28,464 - src.data_loader - INFO - GSK.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  37%|###7      | 37/100 [13:47<24:03, 22.92s/it]Running backtests:  38%|###8      | 38/100 [13:49<17:16, 16.72s/it]2026-06-25 15:40:55,450 - src.data_loader - INFO - HLN.L: Downloaded 994 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:40:56,479 - src.data_loader - INFO - HLMA.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  39%|###9      | 39/100 [14:28<23:40, 23.29s/it]2026-06-25 15:41:40,705 - src.data_loader - INFO - HSX.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  40%|####      | 40/100 [14:44<20:57, 20.95s/it]2026-06-25 15:41:52,969 - src.data_loader - INFO - HWDN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  41%|####1     | 41/100 [14:58<18:39, 18.97s/it]2026-06-25 15:42:07,193 - src.data_loader - INFO - HSBA.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  42%|####2     | 42/100 [15:06<15:13, 15.75s/it]2026-06-25 15:42:13,271 - src.data_loader - INFO - ICG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  43%|####3     | 43/100 [15:48<22:27, 23.64s/it]2026-06-25 15:43:01,701 - src.data_loader - INFO - IGG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  44%|####4     | 44/100 [16:08<20:53, 22.39s/it]2026-06-25 15:43:18,830 - src.data_loader - INFO - IHG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  45%|####5     | 45/100 [16:18<17:19, 18.90s/it]Running backtests:  46%|####6     | 46/100 [16:26<13:49, 15.35s/it]2026-06-25 15:43:28,149 - src.data_loader - INFO - IMI.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:43:31,947 - src.data_loader - INFO - IMB.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  47%|####6     | 47/100 [17:13<22:07, 25.05s/it]2026-06-25 15:44:26,372 - src.data_loader - INFO - INF.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  48%|####8     | 48/100 [17:33<20:15, 23.38s/it]2026-06-25 15:44:41,766 - src.data_loader - INFO - IAG.L: Downloaded 1255 rows from 2021-06-26 to 2026-06-25
+Running backtests:  49%|####9     | 49/100 [17:42<16:15, 19.13s/it]2026-06-25 15:44:51,347 - src.data_loader - INFO - ITRK.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  50%|#####     | 50/100 [17:50<13:09, 15.80s/it]2026-06-25 15:44:56,354 - src.data_loader - INFO - INVP.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  51%|#####1    | 51/100 [18:36<20:23, 24.98s/it]2026-06-25 15:45:51,070 - src.data_loader - INFO - JD.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  52%|#####2    | 52/100 [18:52<17:50, 22.31s/it]2026-06-25 15:46:02,555 - src.data_loader - INFO - BGEO.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  53%|#####3    | 53/100 [19:03<14:48, 18.90s/it]2026-06-25 15:46:11,738 - src.data_loader - INFO - KGF.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  54%|#####4    | 54/100 [19:13<12:17, 16.04s/it]2026-06-25 15:46:19,025 - src.data_loader - INFO - LAND.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  55%|#####5    | 55/100 [20:04<19:54, 26.55s/it]2026-06-25 15:47:17,339 - src.data_loader - INFO - LGEN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  56%|#####6    | 56/100 [20:18<16:41, 22.76s/it]2026-06-25 15:47:27,854 - src.data_loader - INFO - LLOY.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  57%|#####6    | 57/100 [20:26<13:07, 18.31s/it]2026-06-25 15:47:33,742 - src.data_loader - INFO - LMP.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  58%|#####8    | 58/100 [20:33<10:28, 14.97s/it]2026-06-25 15:47:39,268 - src.data_loader - INFO - LSEG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  59%|#####8    | 59/100 [21:26<18:04, 26.45s/it]2026-06-25 15:48:38,449 - src.data_loader - INFO - MNG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  60%|######    | 60/100 [21:39<14:58, 22.46s/it]2026-06-25 15:48:49,140 - src.data_loader - INFO - MKS.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  61%|######1   | 61/100 [21:50<12:15, 18.85s/it]Running backtests:  62%|######2   | 62/100 [21:54<09:09, 14.45s/it]2026-06-25 15:48:57,297 - src.data_loader - INFO - MRO.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:48:59,143 - src.data_loader - INFO - MTLN.L: Downloaded 225 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:48:59,154 - src.data_loader - WARNING - MTLN.L: Insufficient data (225 < 252 required)
+Running backtests:  63%|######3   | 63/100 [21:57<06:45, 10.96s/it]2026-06-25 15:49:03,761 - src.data_loader - INFO - NG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  64%|######4   | 64/100 [22:50<14:11, 23.64s/it]Running backtests:  65%|######5   | 65/100 [23:02<11:44, 20.13s/it]2026-06-25 15:50:05,104 - src.data_loader - INFO - NWG.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:50:11,571 - src.data_loader - INFO - NXT.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  66%|######6   | 66/100 [23:11<09:32, 16.83s/it]2026-06-25 15:50:16,955 - src.data_loader - INFO - PSON.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  67%|######7   | 67/100 [23:18<07:34, 13.77s/it]2026-06-25 15:50:24,097 - src.data_loader - INFO - PSH.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  68%|######8   | 68/100 [24:19<14:55, 27.98s/it]Running backtests:  69%|######9   | 69/100 [24:25<11:02, 21.36s/it]2026-06-25 15:51:30,688 - src.data_loader - INFO - PSN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  70%|#######   | 70/100 [24:32<08:32, 17.08s/it]2026-06-25 15:51:34,543 - src.data_loader - INFO - PCT.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:51:39,002 - src.data_loader - INFO - PRU.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  71%|#######1  | 71/100 [24:40<06:56, 14.37s/it]2026-06-25 15:51:48,772 - src.data_loader - INFO - RKT.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  72%|#######2  | 72/100 [25:40<13:09, 28.20s/it]Running backtests:  73%|#######3  | 73/100 [25:43<09:12, 20.45s/it]2026-06-25 15:52:50,754 - src.data_loader - INFO - REL.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  74%|#######4  | 74/100 [25:50<07:06, 16.42s/it]2026-06-25 15:52:52,403 - src.data_loader - INFO - RTO.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:52:56,540 - src.data_loader - INFO - RIO.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  75%|#######5  | 75/100 [26:01<06:14, 14.99s/it]2026-06-25 15:53:08,919 - src.data_loader - INFO - RR.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  76%|#######6  | 76/100 [26:58<10:59, 27.50s/it]Running backtests:  77%|#######7  | 77/100 [27:01<07:46, 20.28s/it]2026-06-25 15:54:08,441 - src.data_loader - INFO - SGE.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:54:10,069 - src.data_loader - INFO - SBRY.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  78%|#######8  | 78/100 [27:09<06:00, 16.39s/it]2026-06-25 15:54:16,314 - src.data_loader - INFO - SDR.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  79%|#######9  | 79/100 [27:21<05:16, 15.09s/it]2026-06-25 15:54:27,770 - src.data_loader - INFO - SMT.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  80%|########  | 80/100 [28:15<08:59, 26.99s/it]Running backtests:  81%|########1 | 81/100 [28:23<06:43, 21.25s/it]2026-06-25 15:55:26,848 - src.data_loader - INFO - SGRO.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  82%|########2 | 82/100 [28:28<04:55, 16.40s/it]2026-06-25 15:55:31,991 - src.data_loader - INFO - SVT.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:55:35,026 - src.data_loader - INFO - SHEL.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  83%|########2 | 83/100 [28:40<04:11, 14.82s/it]2026-06-25 15:55:46,130 - src.data_loader - INFO - SMIN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  84%|########4 | 84/100 [29:35<07:14, 27.13s/it]2026-06-25 15:56:50,860 - src.data_loader - INFO - SN.L: Downloaded 1259 rows from 2021-06-26 to 2026-06-25
+Running backtests:  85%|########5 | 85/100 [29:49<05:44, 22.96s/it]Running backtests:  86%|########6 | 86/100 [29:53<04:03, 17.38s/it]2026-06-25 15:56:56,751 - src.data_loader - INFO - SPX.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:57:00,348 - src.data_loader - INFO - SSE.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  87%|########7 | 87/100 [30:02<03:14, 14.97s/it]2026-06-25 15:57:09,251 - src.data_loader - INFO - STAN.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  88%|########8 | 88/100 [30:52<05:03, 25.28s/it]Running backtests:  89%|########9 | 89/100 [31:02<03:47, 20.65s/it]2026-06-25 15:58:04,085 - src.data_loader - INFO - SDLF.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  90%|######### | 90/100 [31:07<02:41, 16.13s/it]2026-06-25 15:58:10,675 - src.data_loader - INFO - STJ.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:58:13,866 - src.data_loader - INFO - TSCO.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  91%|#########1| 91/100 [31:18<02:12, 14.69s/it]2026-06-25 15:58:25,090 - src.data_loader - INFO - BBOX.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  92%|#########2| 92/100 [32:13<03:33, 26.72s/it]Running backtests:  93%|#########3| 93/100 [32:22<02:29, 21.39s/it]2026-06-25 15:59:27,245 - src.data_loader - INFO - ULVR.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  94%|#########3| 94/100 [32:27<01:39, 16.56s/it]2026-06-25 15:59:30,757 - src.data_loader - INFO - UU.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+2026-06-25 15:59:34,186 - src.data_loader - INFO - VOD.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  95%|#########5| 95/100 [32:38<01:13, 14.66s/it]2026-06-25 15:59:45,679 - src.data_loader - INFO - WEIR.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  96%|#########6| 96/100 [33:38<01:53, 28.47s/it]Running backtests:  97%|#########7| 97/100 [33:42<01:03, 21.00s/it]2026-06-25 16:00:48,621 - src.data_loader - INFO - WTB.L: Downloaded 1260 rows from 2021-06-26 to 2026-06-25
+Running backtests:  98%|#########8| 98/100 [33:47<00:32, 16.34s/it]Running backtests:  99%|#########9| 99/100 [33:55<00:13, 13.74s/it]Running backtests: 100%|##########| 100/100 [34:18<00:00, 16.50s/it]Running backtests: 100%|##########| 100/100 [34:18<00:00, 20.59s/it]
+2026-06-25 16:01:47,877 - __main__ - INFO - Europe Summary:
+2026-06-25 16:01:47,880 - __main__ - INFO -   - Successful: 99
+2026-06-25 16:01:47,881 - __main__ - INFO -   - Errors: 0
+2026-06-25 16:01:47,882 - __main__ - INFO -   - Skipped: 1
+2026-06-25 16:01:47,938 - __main__ - INFO -   - Saved skipped to: results/combined\europe_skipped.csv
+2026-06-25 16:01:47,938 - __main__ - INFO - 
+Processing US...
+Running backtests:   0%|          | 0/100 [00:00<?, ?it/s]2026-06-25 16:01:48,837 - src.data_loader - INFO - ACN: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:01:49,750 - src.data_loader - INFO - ABT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:01:49,798 - src.data_loader - INFO - AAPL: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:01:49,889 - src.data_loader - INFO - ABBV: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:   1%|1         | 1/100 [01:30<2:28:36, 90.06s/it]Running backtests:   2%|2         | 2/100 [01:37<1:07:19, 41.22s/it]Running backtests:   3%|3         | 3/100 [01:37<36:26, 22.54s/it]  2026-06-25 16:03:25,637 - src.data_loader - INFO - ADBE: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:   4%|4         | 4/100 [01:38<22:32, 14.09s/it]2026-06-25 16:03:27,181 - src.data_loader - INFO - AMAT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:03:27,185 - src.data_loader - INFO - AMD: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:03:28,424 - src.data_loader - INFO - AMGN: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:   5%|5         | 5/100 [03:08<1:05:40, 41.47s/it]Running backtests:   6%|6         | 6/100 [03:14<46:07, 29.44s/it]  2026-06-25 16:05:03,855 - src.data_loader - INFO - AMT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:   8%|8         | 8/100 [03:17<23:50, 15.55s/it]2026-06-25 16:05:05,241 - src.data_loader - INFO - AMZN: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:05:05,564 - src.data_loader - INFO - AVGO: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:05:07,116 - src.data_loader - INFO - AXP: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:   9%|9         | 9/100 [04:52<55:06, 36.34s/it]Running backtests:  11%|#1        | 11/100 [04:54<31:27, 21.20s/it]2026-06-25 16:06:44,788 - src.data_loader - INFO - BAC: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:06:44,836 - src.data_loader - INFO - BA: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  12%|#2        | 12/100 [04:58<25:11, 17.18s/it]2026-06-25 16:06:46,315 - src.data_loader - INFO - BKNG: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:06:48,019 - src.data_loader - INFO - BLK: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  13%|#3        | 13/100 [06:27<51:07, 35.26s/it]Running backtests:  14%|#4        | 14/100 [06:30<38:15, 26.69s/it]Running backtests:  15%|#5        | 15/100 [06:35<29:33, 20.86s/it]2026-06-25 16:08:23,858 - src.data_loader - INFO - BMY: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:08:24,692 - src.data_loader - INFO - BNY: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  16%|#6        | 16/100 [06:38<22:12, 15.86s/it]2026-06-25 16:08:26,998 - src.data_loader - INFO - BRK-B: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:08:27,915 - src.data_loader - INFO - C: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  17%|#7        | 17/100 [08:06<50:27, 36.47s/it]Running backtests:  18%|#8        | 18/100 [08:11<37:22, 27.35s/it]2026-06-25 16:10:02,897 - src.data_loader - INFO - CAT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  19%|#9        | 19/100 [08:18<28:55, 21.43s/it]2026-06-25 16:10:06,921 - src.data_loader - INFO - CL: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  20%|##        | 20/100 [08:22<21:24, 16.06s/it]2026-06-25 16:10:10,363 - src.data_loader - INFO - CMCSA: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:10:13,496 - src.data_loader - INFO - COF: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  21%|##1       | 21/100 [09:46<47:45, 36.27s/it]Running backtests:  22%|##2       | 22/100 [09:52<35:32, 27.34s/it]2026-06-25 16:11:43,845 - src.data_loader - INFO - COP: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:11:49,006 - src.data_loader - INFO - COST: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  23%|##3       | 23/100 [10:01<28:03, 21.87s/it]2026-06-25 16:11:54,198 - src.data_loader - INFO - CRM: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  24%|##4       | 24/100 [10:06<21:21, 16.86s/it]2026-06-25 16:11:58,804 - src.data_loader - INFO - CSCO: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  25%|##5       | 25/100 [11:27<44:55, 35.94s/it]2026-06-25 16:13:27,044 - src.data_loader - INFO - CVS: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  26%|##6       | 26/100 [11:40<35:55, 29.12s/it]Running backtests:  27%|##7       | 27/100 [11:49<27:57, 22.98s/it]2026-06-25 16:13:37,228 - src.data_loader - INFO - CVX: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  28%|##8       | 28/100 [11:51<20:03, 16.71s/it]2026-06-25 16:13:40,779 - src.data_loader - INFO - DE: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:13:44,355 - src.data_loader - INFO - DHR: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  29%|##9       | 29/100 [13:01<38:48, 32.79s/it]2026-06-25 16:14:58,803 - src.data_loader - INFO - DIS: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  30%|###       | 30/100 [13:21<33:43, 28.91s/it]Running backtests:  31%|###1      | 31/100 [13:27<25:23, 22.09s/it]2026-06-25 16:15:16,153 - src.data_loader - INFO - DUK: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  32%|###2      | 32/100 [13:31<19:01, 16.79s/it]2026-06-25 16:15:21,795 - src.data_loader - INFO - EMR: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:15:23,811 - src.data_loader - INFO - FDX: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  33%|###3      | 33/100 [14:35<34:20, 30.75s/it]2026-06-25 16:16:32,924 - src.data_loader - INFO - GD: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  34%|###4      | 34/100 [15:02<32:38, 29.68s/it]Running backtests:  35%|###5      | 35/100 [15:09<24:49, 22.91s/it]Running backtests:  36%|###6      | 36/100 [15:10<17:31, 16.43s/it]2026-06-25 16:17:00,007 - src.data_loader - INFO - GE: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:17:01,421 - src.data_loader - INFO - GEV: Downloaded 562 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:17:02,262 - src.data_loader - INFO - GILD: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  37%|###7      | 37/100 [16:12<31:20, 29.85s/it]Running backtests:  38%|###8      | 38/100 [16:12<21:40, 20.98s/it]2026-06-25 16:18:08,152 - src.data_loader - INFO - GOOG: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:18:08,199 - src.data_loader - INFO - GM: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  39%|###9      | 39/100 [16:24<18:29, 18.19s/it]Running backtests:  40%|####      | 40/100 [16:25<13:06, 13.11s/it]2026-06-25 16:18:13,365 - src.data_loader - INFO - GOOGL: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:18:17,511 - src.data_loader - INFO - GS: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  41%|####1     | 41/100 [16:46<15:08, 15.40s/it]Running backtests:  42%|####2     | 42/100 [16:50<11:38, 12.05s/it]2026-06-25 16:18:40,172 - src.data_loader - INFO - HD: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  43%|####3     | 43/100 [16:54<09:19,  9.82s/it]2026-06-25 16:18:43,215 - src.data_loader - INFO - HON: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:18:45,741 - src.data_loader - INFO - IBM: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  44%|####4     | 44/100 [17:04<09:03,  9.71s/it]2026-06-25 16:18:58,721 - src.data_loader - INFO - INTC: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  45%|####5     | 45/100 [17:17<09:49, 10.72s/it]2026-06-25 16:19:11,052 - src.data_loader - INFO - INTU: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  46%|####6     | 46/100 [17:30<10:22, 11.52s/it]Running backtests:  47%|####6     | 47/100 [17:32<07:28,  8.46s/it]2026-06-25 16:19:21,142 - src.data_loader - INFO - ISRG: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:19:24,020 - src.data_loader - INFO - JNJ: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  48%|####8     | 48/100 [17:47<09:09, 10.57s/it]2026-06-25 16:19:41,929 - src.data_loader - INFO - JPM: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  49%|####9     | 49/100 [17:55<08:20,  9.81s/it]2026-06-25 16:19:51,779 - src.data_loader - INFO - KO: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  50%|#####     | 50/100 [18:11<09:33, 11.48s/it]Running backtests:  51%|#####1    | 51/100 [18:11<06:40,  8.17s/it]2026-06-25 16:20:01,280 - src.data_loader - INFO - LIN: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:20:02,450 - src.data_loader - INFO - LLY: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  52%|#####2    | 52/100 [18:35<10:13, 12.79s/it]Running backtests:  53%|#####3    | 53/100 [18:36<07:27,  9.53s/it]2026-06-25 16:20:28,917 - src.data_loader - INFO - LMT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:20:30,890 - src.data_loader - INFO - LOW: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  54%|#####4    | 54/100 [18:50<08:18, 10.84s/it]Running backtests:  55%|#####5    | 55/100 [18:53<06:20,  8.45s/it]2026-06-25 16:20:44,769 - src.data_loader - INFO - LRCX: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:20:47,008 - src.data_loader - INFO - MA: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  56%|#####6    | 56/100 [19:28<12:04, 16.46s/it]Running backtests:  57%|#####6    | 57/100 [19:36<09:49, 13.71s/it]2026-06-25 16:21:25,409 - src.data_loader - INFO - MCD: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:21:31,289 - src.data_loader - INFO - MDLZ: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  58%|#####8    | 58/100 [19:53<10:24, 14.88s/it]Running backtests:  59%|#####8    | 59/100 [19:57<07:55, 11.59s/it]2026-06-25 16:21:47,349 - src.data_loader - INFO - MDT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:21:50,091 - src.data_loader - INFO - META: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  60%|######    | 60/100 [20:30<11:54, 17.86s/it]2026-06-25 16:22:27,708 - src.data_loader - INFO - MMM: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  61%|######1   | 61/100 [20:40<10:08, 15.60s/it]2026-06-25 16:22:35,985 - src.data_loader - INFO - MO: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  62%|######2   | 62/100 [20:57<10:04, 15.91s/it]Running backtests:  63%|######3   | 63/100 [21:01<07:45, 12.59s/it]2026-06-25 16:22:50,871 - src.data_loader - INFO - MRK: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:22:54,008 - src.data_loader - INFO - MS: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  64%|######4   | 64/100 [21:35<11:14, 18.72s/it]Running backtests:  65%|######5   | 65/100 [21:44<09:17, 15.94s/it]2026-06-25 16:23:32,890 - src.data_loader - INFO - MSFT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:23:40,131 - src.data_loader - INFO - MU: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  66%|######6   | 66/100 [21:58<08:42, 15.38s/it]2026-06-25 16:23:52,761 - src.data_loader - INFO - NEE: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  67%|######7   | 67/100 [22:05<07:07, 12.94s/it]2026-06-25 16:23:58,821 - src.data_loader - INFO - NFLX: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  68%|######8   | 68/100 [22:35<09:37, 18.04s/it]2026-06-25 16:24:33,057 - src.data_loader - INFO - NKE: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  69%|######9   | 69/100 [22:53<09:18, 18.00s/it]Running backtests:  70%|#######   | 70/100 [22:58<07:05, 14.18s/it]2026-06-25 16:24:48,128 - src.data_loader - INFO - NOW: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:24:53,489 - src.data_loader - INFO - NVDA: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  71%|#######1  | 71/100 [23:15<07:09, 14.82s/it]2026-06-25 16:25:11,928 - src.data_loader - INFO - ORCL: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  72%|#######2  | 72/100 [23:36<07:46, 16.67s/it]2026-06-25 16:25:33,867 - src.data_loader - INFO - PEP: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  73%|#######3  | 73/100 [24:01<08:39, 19.25s/it]Running backtests:  74%|#######4  | 74/100 [24:01<05:53, 13.59s/it]2026-06-25 16:25:55,967 - src.data_loader - INFO - PG: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:25:56,265 - src.data_loader - INFO - PFE: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  75%|#######5  | 75/100 [24:23<06:42, 16.11s/it]2026-06-25 16:26:19,773 - src.data_loader - INFO - PLTR: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  76%|#######6  | 76/100 [24:41<06:36, 16.51s/it]2026-06-25 16:26:36,629 - src.data_loader - INFO - PM: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  77%|#######7  | 77/100 [25:02<06:50, 17.85s/it]Running backtests:  78%|#######8  | 78/100 [25:02<04:35, 12.54s/it]2026-06-25 16:26:55,714 - src.data_loader - INFO - QCOM: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:26:55,914 - src.data_loader - INFO - RTX: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  79%|#######9  | 79/100 [25:17<04:36, 13.17s/it]2026-06-25 16:27:13,390 - src.data_loader - INFO - SBUX: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  80%|########  | 80/100 [25:28<04:13, 12.69s/it]2026-06-25 16:27:21,643 - src.data_loader - INFO - SCHW: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  81%|########1 | 81/100 [25:49<04:46, 15.08s/it]Running backtests:  82%|########2 | 82/100 [25:51<03:22, 11.25s/it]2026-06-25 16:27:43,626 - src.data_loader - INFO - SO: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:27:44,445 - src.data_loader - INFO - SPG: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  83%|########2 | 83/100 [26:04<03:19, 11.72s/it]2026-06-25 16:28:00,647 - src.data_loader - INFO - T: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  84%|########4 | 84/100 [26:13<02:54, 10.93s/it]2026-06-25 16:28:05,925 - src.data_loader - INFO - TMO: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  85%|########5 | 85/100 [26:34<03:27, 13.84s/it]Running backtests:  86%|########6 | 86/100 [26:37<02:31, 10.83s/it]2026-06-25 16:28:28,081 - src.data_loader - INFO - TMUS: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:28:30,628 - src.data_loader - INFO - TSLA: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  87%|########7 | 87/100 [26:53<02:40, 12.38s/it]Running backtests:  88%|########8 | 88/100 [26:58<01:59,  9.94s/it]2026-06-25 16:28:46,925 - src.data_loader - INFO - TXN: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:28:49,930 - src.data_loader - INFO - UBER: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  89%|########9 | 89/100 [27:17<02:21, 12.88s/it]2026-06-25 16:29:11,360 - src.data_loader - INFO - UNH: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  90%|######### | 90/100 [27:25<01:52, 11.23s/it]2026-06-25 16:29:19,847 - src.data_loader - INFO - UNP: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  91%|#########1| 91/100 [27:41<01:54, 12.77s/it]Running backtests:  92%|#########2| 92/100 [27:42<01:13,  9.19s/it]2026-06-25 16:29:32,692 - src.data_loader - INFO - UPS: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:29:35,838 - src.data_loader - INFO - USB: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  93%|#########3| 93/100 [27:58<01:18, 11.16s/it]2026-06-25 16:29:53,198 - src.data_loader - INFO - V: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  94%|#########3| 94/100 [28:10<01:08, 11.47s/it]2026-06-25 16:30:03,980 - src.data_loader - INFO - VZ: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  95%|#########5| 95/100 [28:28<01:07, 13.48s/it]Running backtests:  96%|#########6| 96/100 [28:29<00:39,  9.77s/it]2026-06-25 16:30:22,414 - src.data_loader - INFO - WFC: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+2026-06-25 16:30:24,499 - src.data_loader - INFO - WMT: Downloaded 1253 rows from 2021-06-26 to 2026-06-25
+Running backtests:  97%|#########7| 97/100 [28:45<00:34, 11.43s/it]Running backtests:  98%|#########8| 98/100 [28:57<00:23, 11.75s/it]Running backtests:  99%|#########9| 99/100 [29:10<00:12, 12.14s/it]Running backtests: 100%|##########| 100/100 [29:13<00:00,  9.37s/it]Running backtests: 100%|##########| 100/100 [29:13<00:00, 17.53s/it]
+2026-06-25 16:31:12,547 - __main__ - INFO - US Summary:
+2026-06-25 16:31:12,548 - __main__ - INFO -   - Successful: 100
+2026-06-25 16:31:12,549 - __main__ - INFO -   - Errors: 0
+2026-06-25 16:31:12,549 - __main__ - INFO -   - Skipped: 0
+2026-06-25 16:31:12,549 - __main__ - INFO - 
+================================================================================
+2026-06-25 16:31:12,550 - __main__ - INFO - STEP 3: AGGREGATING RESULTS
+2026-06-25 16:31:12,550 - __main__ - INFO - ================================================================================
+2026-06-25 16:31:12,637 - __main__ - INFO - Total results: 5364
+2026-06-25 16:31:12,638 - __main__ - INFO - Total stocks tested: 300
+2026-06-25 16:31:12,643 - __main__ - INFO - Unique tickers: 298
+2026-06-25 16:31:14,635 - __main__ - INFO - Saved combined results to: results/combined\all_strategy_results.csv
+2026-06-25 16:31:17,901 - __main__ - INFO - Saved trade history to: results/combined\trade_history.csv
+2026-06-25 16:31:18,004 - __main__ - INFO - Saved latest signals to: results/combined\latest_signals.csv
+2026-06-25 16:31:18,005 - __main__ - INFO - 
+================================================================================
+2026-06-25 16:31:18,006 - __main__ - INFO - STEP 4: GENERATING VISUALIZATIONS
+2026-06-25 16:31:18,007 - __main__ - INFO - ================================================================================
+2026-06-25 16:31:18,012 - src.visualization - INFO - Generating charts...
+2026-06-25 16:31:52,512 - src.visualization - INFO - Saved chart: results/charts\asia_equity_curve_by_strategy.png
+2026-06-25 16:31:53,455 - src.visualization - INFO - Saved chart: results/charts\asia_signal_distribution.png
+2026-06-25 16:31:54,579 - src.visualization - INFO - Saved chart: results/charts\asia_top_10_stocks.png
+2026-06-25 16:31:55,586 - src.visualization - INFO - Saved chart: results/charts\asia_worst_10_stocks.png
+2026-06-25 16:32:06,246 - src.visualization - INFO - Saved chart: results/charts\asia_strategy_vs_buyhold.png
+2026-06-25 16:32:40,880 - src.visualization - INFO - Saved chart: results/charts\europe_equity_curve_by_strategy.png
+2026-06-25 16:32:41,631 - src.visualization - INFO - Saved chart: results/charts\europe_signal_distribution.png
+2026-06-25 16:32:42,454 - src.visualization - INFO - Saved chart: results/charts\europe_top_10_stocks.png
+2026-06-25 16:32:43,637 - src.visualization - INFO - Saved chart: results/charts\europe_worst_10_stocks.png
+2026-06-25 16:32:51,719 - src.visualization - INFO - Saved chart: results/charts\europe_strategy_vs_buyhold.png
+2026-06-25 16:33:25,568 - src.visualization - INFO - Saved chart: results/charts\us_equity_curve_by_strategy.png
+2026-06-25 16:33:26,289 - src.visualization - INFO - Saved chart: results/charts\us_signal_distribution.png
+2026-06-25 16:33:27,418 - src.visualization - INFO - Saved chart: results/charts\us_top_10_stocks.png
+2026-06-25 16:33:28,332 - src.visualization - INFO - Saved chart: results/charts\us_worst_10_stocks.png
+2026-06-25 16:33:36,888 - src.visualization - INFO - Saved chart: results/charts\us_strategy_vs_buyhold.png
+2026-06-25 16:33:38,350 - src.visualization - INFO - Saved chart: results/charts\average_return_by_strategy_region.png
+2026-06-25 16:33:39,786 - src.visualization - INFO - Saved chart: results/charts\sharpe_ratio_comparison.png
+2026-06-25 16:33:41,553 - src.visualization - INFO - Saved chart: results/charts\max_drawdown_comparison.png
+2026-06-25 16:35:20,722 - src.visualization - INFO - Saved chart: results/charts\cumulative_returns_by_strategy.png
+2026-06-25 16:37:01,901 - src.visualization - INFO - Saved chart: results/charts\cumulative_returns_by_region.png
+2026-06-25 16:37:04,143 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_adx_di.png
+2026-06-25 16:37:06,244 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_atr_breakout.png
+2026-06-25 16:37:08,280 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_bollinger_mean_reversion.png
+2026-06-25 16:37:10,252 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_cci.png
+2026-06-25 16:37:12,015 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_donchian_channel.png
+2026-06-25 16:37:13,666 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_ema_crossover.png
+2026-06-25 16:37:15,237 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_keltner_channel.png
+2026-06-25 16:37:17,060 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_macd.png
+2026-06-25 16:37:18,910 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_mfi.png
+2026-06-25 16:37:20,755 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_obv.png
+2026-06-25 16:37:22,654 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_parabolic_sar.png
+2026-06-25 16:37:25,144 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_roc_momentum.png
+2026-06-25 16:37:27,182 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_rsi.png
+2026-06-25 16:37:28,858 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_sma_crossover.png
+2026-06-25 16:37:30,921 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_stochastic.png
+2026-06-25 16:37:32,586 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_supertrend.png
+2026-06-25 16:37:34,081 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_vwap.png
+2026-06-25 16:37:35,768 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_williams_r.png
+2026-06-25 16:37:37,660 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_adx_di.png
+2026-06-25 16:37:39,455 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_atr_breakout.png
+2026-06-25 16:37:41,267 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_bollinger_mean_reversion.png
+2026-06-25 16:37:43,308 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_cci.png
+2026-06-25 16:37:45,300 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_donchian_channel.png
+2026-06-25 16:37:47,181 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_ema_crossover.png
+2026-06-25 16:37:49,133 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_keltner_channel.png
+2026-06-25 16:37:51,447 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_macd.png
+2026-06-25 16:37:53,244 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_mfi.png
+2026-06-25 16:37:55,331 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_obv.png
+2026-06-25 16:37:57,218 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_parabolic_sar.png
+2026-06-25 16:37:59,044 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_roc_momentum.png
+2026-06-25 16:38:01,179 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_rsi.png
+2026-06-25 16:38:03,064 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_sma_crossover.png
+2026-06-25 16:38:05,038 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_stochastic.png
+2026-06-25 16:38:07,006 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_supertrend.png
+2026-06-25 16:38:08,693 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_vwap.png
+2026-06-25 16:38:10,745 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_williams_r.png
+2026-06-25 16:38:12,645 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_adx_di.png
+2026-06-25 16:38:14,479 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_atr_breakout.png
+2026-06-25 16:38:16,350 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_bollinger_mean_reversion.png
+2026-06-25 16:38:18,381 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_cci.png
+2026-06-25 16:38:20,119 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_donchian_channel.png
+2026-06-25 16:38:21,982 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_ema_crossover.png
+2026-06-25 16:38:23,900 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_keltner_channel.png
+2026-06-25 16:38:26,680 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_macd.png
+2026-06-25 16:38:29,091 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_mfi.png
+2026-06-25 16:38:31,791 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_obv.png
+2026-06-25 16:38:34,149 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_parabolic_sar.png
+2026-06-25 16:38:36,453 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_roc_momentum.png
+2026-06-25 16:38:38,176 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_rsi.png
+2026-06-25 16:38:39,980 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_sma_crossover.png
+2026-06-25 16:38:41,764 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_stochastic.png
+2026-06-25 16:38:43,546 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_supertrend.png
+2026-06-25 16:38:45,228 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_vwap.png
+2026-06-25 16:38:46,949 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_williams_r.png
+2026-06-25 16:38:46,951 - src.visualization - INFO - Chart generation complete
+2026-06-25 16:38:46,951 - __main__ - INFO - Visualizations generated successfully
+2026-06-25 16:38:46,951 - __main__ - INFO - 
+================================================================================
+2026-06-25 16:38:46,952 - __main__ - INFO - STEP 5: GENERATING REPORT
+2026-06-25 16:38:46,952 - __main__ - INFO - ================================================================================
+2026-06-25 16:38:47,430 - src.reporting - INFO - Report saved to: results\report.md
+2026-06-25 16:38:47,431 - __main__ - INFO - Report saved to: results\report.md
+2026-06-25 16:38:47,432 - __main__ - INFO - 
+================================================================================
+2026-06-25 16:38:47,432 - __main__ - INFO - FINAL SUMMARY
+2026-06-25 16:38:47,433 - __main__ - INFO - ================================================================================
+2026-06-25 16:38:47,433 - __main__ - INFO - 
+Results by Region:
+2026-06-25 16:38:47,436 - __main__ - INFO -   Asia:
+2026-06-25 16:38:47,437 - __main__ - INFO -     - Stocks: 99
+2026-06-25 16:38:47,438 - __main__ - INFO -     - Avg Return: 40.54%
+2026-06-25 16:38:47,438 - __main__ - INFO -     - Avg Sharpe: 0.04
+2026-06-25 16:38:47,441 - __main__ - INFO -   Europe:
+2026-06-25 16:38:47,442 - __main__ - INFO -     - Stocks: 99
+2026-06-25 16:38:47,442 - __main__ - INFO -     - Avg Return: 17.50%
+2026-06-25 16:38:47,443 - __main__ - INFO -     - Avg Sharpe: -0.02
+2026-06-25 16:38:47,446 - __main__ - INFO -   US:
+2026-06-25 16:38:47,447 - __main__ - INFO -     - Stocks: 100
+2026-06-25 16:38:47,448 - __main__ - INFO -     - Avg Return: 27.14%
+2026-06-25 16:38:47,449 - __main__ - INFO -     - Avg Sharpe: 0.01
+2026-06-25 16:38:47,449 - __main__ - INFO - 
+Results by Strategy:
+2026-06-25 16:38:47,452 - __main__ - INFO -   RSI:
+2026-06-25 16:38:47,453 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,454 - __main__ - INFO -     - Avg Return: 20.13%
+2026-06-25 16:38:47,455 - __main__ - INFO -     - Avg Sharpe: 0.02
+2026-06-25 16:38:47,457 - __main__ - INFO -   ADX_DI:
+2026-06-25 16:38:47,458 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,459 - __main__ - INFO -     - Avg Return: 9.09%
+2026-06-25 16:38:47,460 - __main__ - INFO -     - Avg Sharpe: -0.06
+2026-06-25 16:38:47,465 - __main__ - INFO -   ATR_Breakout:
+2026-06-25 16:38:47,466 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,467 - __main__ - INFO -     - Avg Return: 14.80%
+2026-06-25 16:38:47,467 - __main__ - INFO -     - Avg Sharpe: -0.05
+2026-06-25 16:38:47,470 - __main__ - INFO -   SMA_Crossover:
+2026-06-25 16:38:47,471 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,472 - __main__ - INFO -     - Avg Return: 81.73%
+2026-06-25 16:38:47,472 - __main__ - INFO -     - Avg Sharpe: 0.14
+2026-06-25 16:38:47,475 - __main__ - INFO -   EMA_Crossover:
+2026-06-25 16:38:47,476 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,477 - __main__ - INFO -     - Avg Return: 31.25%
+2026-06-25 16:38:47,478 - __main__ - INFO -     - Avg Sharpe: -0.03
+2026-06-25 16:38:47,480 - __main__ - INFO -   MACD:
+2026-06-25 16:38:47,481 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,482 - __main__ - INFO -     - Avg Return: 20.31%
+2026-06-25 16:38:47,483 - __main__ - INFO -     - Avg Sharpe: -0.02
+2026-06-25 16:38:47,485 - __main__ - INFO -   Bollinger_Mean_Reversion:
+2026-06-25 16:38:47,486 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,487 - __main__ - INFO -     - Avg Return: 27.14%
+2026-06-25 16:38:47,487 - __main__ - INFO -     - Avg Sharpe: 0.07
+2026-06-25 16:38:47,490 - __main__ - INFO -   Stochastic:
+2026-06-25 16:38:47,491 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,492 - __main__ - INFO -     - Avg Return: 41.57%
+2026-06-25 16:38:47,493 - __main__ - INFO -     - Avg Sharpe: 0.13
+2026-06-25 16:38:47,495 - __main__ - INFO -   CCI:
+2026-06-25 16:38:47,496 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,496 - __main__ - INFO -     - Avg Return: 28.27%
+2026-06-25 16:38:47,497 - __main__ - INFO -     - Avg Sharpe: 0.05
+2026-06-25 16:38:47,500 - __main__ - INFO -   MFI:
+2026-06-25 16:38:47,501 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,502 - __main__ - INFO -     - Avg Return: 23.62%
+2026-06-25 16:38:47,502 - __main__ - INFO -     - Avg Sharpe: 0.05
+2026-06-25 16:38:47,504 - __main__ - INFO -   OBV:
+2026-06-25 16:38:47,505 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,506 - __main__ - INFO -     - Avg Return: 16.73%
+2026-06-25 16:38:47,506 - __main__ - INFO -     - Avg Sharpe: -0.07
+2026-06-25 16:38:47,508 - __main__ - INFO -   VWAP:
+2026-06-25 16:38:47,509 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,510 - __main__ - INFO -     - Avg Return: 38.99%
+2026-06-25 16:38:47,510 - __main__ - INFO -     - Avg Sharpe: 0.03
+2026-06-25 16:38:47,512 - __main__ - INFO -   Supertrend:
+2026-06-25 16:38:47,513 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,513 - __main__ - INFO -     - Avg Return: 34.72%
+2026-06-25 16:38:47,514 - __main__ - INFO -     - Avg Sharpe: 0.00
+2026-06-25 16:38:47,515 - __main__ - INFO -   Parabolic_SAR:
+2026-06-25 16:38:47,516 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,517 - __main__ - INFO -     - Avg Return: 19.93%
+2026-06-25 16:38:47,518 - __main__ - INFO -     - Avg Sharpe: -0.05
+2026-06-25 16:38:47,520 - __main__ - INFO -   Williams_R:
+2026-06-25 16:38:47,521 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,522 - __main__ - INFO -     - Avg Return: 42.73%
+2026-06-25 16:38:47,523 - __main__ - INFO -     - Avg Sharpe: 0.10
+2026-06-25 16:38:47,525 - __main__ - INFO -   ROC_Momentum:
+2026-06-25 16:38:47,526 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,527 - __main__ - INFO -     - Avg Return: 18.16%
+2026-06-25 16:38:47,528 - __main__ - INFO -     - Avg Sharpe: -0.07
+2026-06-25 16:38:47,530 - __main__ - INFO -   Donchian_Channel:
+2026-06-25 16:38:47,531 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,533 - __main__ - INFO -     - Avg Return: 28.30%
+2026-06-25 16:38:47,534 - __main__ - INFO -     - Avg Sharpe: -0.02
+2026-06-25 16:38:47,537 - __main__ - INFO -   Keltner_Channel:
+2026-06-25 16:38:47,538 - __main__ - INFO -     - Stocks: 298
+2026-06-25 16:38:47,539 - __main__ - INFO -     - Avg Return: 13.52%
+2026-06-25 16:38:47,540 - __main__ - INFO -     - Avg Sharpe: -0.05
+2026-06-25 16:38:47,540 - __main__ - INFO - 
+Output Files:
+2026-06-25 16:38:47,540 - __main__ - INFO -   - Report: results\report.md
+2026-06-25 16:38:47,541 - __main__ - INFO -   - Results CSV: results/combined\all_strategy_results.csv
+2026-06-25 16:38:47,541 - __main__ - INFO -   - Charts directory: results/charts
+2026-06-25 16:38:47,541 - __main__ - INFO -   - Log file: results/logs\backtest_20260625_150131.log
+2026-06-25 16:38:47,542 - __main__ - INFO - 
+================================================================================
+2026-06-25 16:38:47,542 - __main__ - INFO - BACKTEST COMPLETE - 2026-06-25 16:38:47.542621
+2026-06-25 16:38:47,543 - __main__ - INFO - ================================================================================

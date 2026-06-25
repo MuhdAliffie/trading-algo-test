@@ -1,0 +1,223 @@
+You are working on my trading backtesting codebase. I already have or will generate trade result files from testing multiple strategies across Asia, Europe, and US stock markets.
+
+Create one simple interactive dashboard that reads the trade results and visualizes the trading timeline.
+
+Main goal:
+Build an interactive dashboard where I can select one or multiple strategies using checkboxes, choose a timeline/date range, and see the trading performance and trade activity clearly.
+
+The dashboard should show:
+
+1. Money movements
+
+* Show a line graph of portfolio value or cumulative capital over time.
+* The line graph must support multiple selected strategies at the same time.
+* Each selected strategy should appear as a separate line.
+* The graph should update when I change the selected strategy, ticker, region, or date range.
+
+2. Buy and sell time
+
+* Show a timeline chart displaying when buy and sell events occurred.
+* Buy signals should be clearly marked.
+* Sell signals should be clearly marked.
+* The timeline should update based on selected strategy, ticker, region, and date range.
+* It should be easy to see when a stock was bought and when it was sold.
+
+3. Duration held after buy
+
+* Show a table listing each completed trade.
+* Required columns:
+
+  * Region
+  * Ticker
+  * Company name, if available
+  * Strategy
+  * Buy date
+  * Buy price
+  * Sell date
+  * Sell price
+  * Holding duration in days
+  * Trade return
+  * ROI percentage
+  * Exit reason, if available
+
+4. ROI after each sell
+
+* Show a bar graph of ROI after each sell.
+* Each bar should represent one completed trade.
+* The x-axis should show trade number, ticker, or sell date.
+* The y-axis should show ROI percentage.
+* The graph should update when I change filters.
+
+Dashboard filters:
+
+* Region filter:
+
+  * Asia
+  * Europe
+  * US
+  * All regions
+* Strategy filter using checkboxes:
+
+  * Volume
+  * MACD
+  * LSTM-Inspired Bollinger Band Mean Reversion
+  * Ichimoku Cloud
+* Ticker filter:
+
+  * Single ticker
+  * Multiple tickers if practical
+  * All tickers
+* Date range filter:
+
+  * Start date
+  * End date
+* Optional filter:
+
+  * Only profitable trades
+  * Only losing trades
+  * Only active BUY signals
+  * Only completed trades
+
+Expected input files:
+The dashboard should read from the existing results folder. Use these files if they exist:
+
+* results/combined/all_strategy_results.csv
+* results/combined/latest_signals.csv
+* results/combined/trade_history.csv
+* results/combined/error_log.csv
+
+The most important file is:
+
+results/combined/trade_history.csv
+
+Expected trade_history.csv columns may include:
+
+* region
+* ticker
+* company_name
+* strategy
+* buy_date
+* buy_price
+* sell_date
+* sell_price
+* trade_return
+* roi_pct
+* holding_period
+* exit_reason
+* portfolio_value
+* cumulative_return
+
+If some columns are missing, infer them where possible:
+
+* holding_period = sell_date - buy_date
+* roi_pct = ((sell_price - buy_price) / buy_price) * 100
+* trade_return = sell_price - buy_price
+
+If portfolio value over time is not available, create it from trade results using initial capital and cumulative trade returns. However, clearly document this assumption in comments.
+
+Technology requirement:
+
+* Use a simple dashboard framework suitable for Python.
+* Prefer Streamlit unless the existing project already uses Dash or another framework.
+* Create a file such as:
+
+dashboard.py
+
+The dashboard should be runnable using:
+
+streamlit run dashboard.py
+
+Dashboard layout:
+Use a clean layout with a title:
+
+Trading Strategy Timeline Dashboard
+
+Recommended sections:
+
+1. Sidebar filters
+
+* Region selector
+* Strategy checkboxes
+* Ticker selector
+* Date range selector
+* Trade status selector
+
+2. Key summary metrics
+   Show cards or metric boxes:
+
+* Total number of trades
+* Average ROI
+* Total ROI
+* Win rate
+* Best trade
+* Worst trade
+* Average holding duration
+
+3. Money movement line graph
+
+* Portfolio value or cumulative return over time
+* Multiple strategy lines should be visible together
+
+4. Buy/Sell timeline
+
+* Interactive timeline showing buy and sell events
+* Different marker shapes or colors for BUY and SELL
+* Tooltip should show ticker, strategy, date, price, and ROI
+
+5. ROI after each sell bar graph
+
+* Bar chart showing ROI percentage per completed trade
+* Positive and negative ROI should be visually distinguishable if possible
+
+6. Duration held table
+
+* Interactive table of completed trades
+* Sortable by ROI, holding duration, ticker, strategy, or date
+
+7. Optional export
+
+* Allow filtered trade table to be downloaded as CSV
+
+Code quality requirements:
+
+* Keep the code modular.
+* Create helper functions such as:
+
+  * load_trade_history()
+  * clean_trade_data()
+  * apply_filters()
+  * calculate_summary_metrics()
+  * plot_money_movement()
+  * plot_trade_timeline()
+  * plot_roi_bar_chart()
+  * render_trade_table()
+* Add error handling for missing files.
+* Show a helpful message if trade_history.csv is missing.
+* Show a helpful message if no trades match the selected filters.
+* Do not use placeholder or fake data unless strictly needed for testing.
+* If sample data is created for testing, clearly separate it from real results and do not mix it into final analysis.
+
+Graphing requirements:
+
+* Use Plotly for interactive graphs.
+* Money movement should use a Plotly line chart.
+* Buy/Sell timeline should use a Plotly scatter plot or timeline-style chart.
+* ROI after each sell should use a Plotly bar chart.
+* Tables can use Streamlit dataframe.
+
+Validation:
+
+* Ensure date columns are parsed correctly.
+* Ensure ROI is calculated correctly.
+* Ensure holding duration is calculated in days.
+* Ensure filters affect all graphs and tables consistently.
+* Ensure multiple strategies can be selected at the same time.
+* Ensure the dashboard still works if only one strategy is selected.
+
+After implementation, explain:
+
+* What files were created or modified
+* How to run the dashboard
+* What input CSV files are required
+* What each graph means
+* Any assumptions made when calculating portfolio value or ROI
