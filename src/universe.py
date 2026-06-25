@@ -7,6 +7,7 @@ import logging
 import os
 import re
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List
 
 import pandas as pd
@@ -34,12 +35,24 @@ SOURCE_CONFIGS = {
         "sector_header": "sector",
     },
     "Asia": {
-        "url": "https://es.wikipedia.org/wiki/Nikkei_225",
+        "url": "https://indexes.nikkei.co.jp/en/nkave/index/component?idx=nk225",
         "description": "Nikkei 225 constituents used as the Asia top-100 proxy",
         "exchange": "TSE",
-        "regex": r"(.+?)\s*\(\s*TYO\s*:\s*(\d{4})\s*\)",
+        "symbol_header": "code",
+        "name_header": "company name",
+        "prefer_fallback_order": True,
+    },
+    "Malaysia": {
+        "url": "https://companiesmarketcap.com/malaysia/largest-companies-in-malaysia-by-market-cap/",
+        "description": "Largest Bursa Malaysia listed companies by market capitalization",
+        "exchange": "Bursa Malaysia",
+        "source_type": "companiesmarketcap",
+        "regex": r"([A-Za-z0-9]+(?:SS)?\.KL)",
+        "prefer_fallback_order": True,
     },
 }
+
+YFINANCE_NAME_CACHE = {}
 
 FALLBACK_SYMBOLS = {
     "US": [
@@ -81,6 +94,20 @@ FALLBACK_SYMBOLS = {
         "5901.T", "6113.T", "6302.T", "6305.T", "6326.T", "6361.T", "6471.T", "6472.T", "6473.T", "6479.T",
         "6504.T", "6506.T", "6645.T", "6674.T", "6701.T", "6724.T", "6753.T", "6770.T", "6841.T", "6857.T",
     ],
+    "Malaysia": [
+        "1155", "1295", "5347", "1023", "5225", "8869", "5819", "5285", "6742", "3816",
+        "5211", "6033", "6947", "5183", "5326", "4863", "1961", "6012", "5398", "2445",
+        "4677", "4707", "1082", "5246", "6888", "5235SS", "5296", "4197", "7084", "4065",
+        "4715", "7277", "3182", "3255", "7113", "5258", "5168", "7153", "3026", "5983",
+        "5099", "7106", "5274", "9997", "1818", "1015", "1066", "2488", "5288", "5176",
+        "5125", "5227", "5014", "5878", "0166", "0097", "5292", "5286", "7204", "5302",
+        "3689", "2836", "1899", "3336", "9679", "5209", "5253", "5228", "3034", "1562",
+        "5008", "5072", "5916", "9822", "7034", "7052", "5139", "5148", "5186", "5199",
+        "5250", "5257", "5318", "5138", "5172", "5248", "5020", "5069", "5106", "5147",
+        "5200", "5210", "5272", "5284", "5291", "5301", "7054", "7078", "7164", "7202",
+        "7247", "7293", "8583", "8664", "8877", "9296", "9326", "9687", "9695", "9895",
+        "2089", "2291", "3867", "4006", "4502", "5077", "5109", "5681", "5789", "6599",
+    ],
 }
 
 
@@ -102,6 +129,9 @@ def _normalize_symbol(symbol: str, region: str) -> str:
     if region == "Asia":
         symbol = symbol.replace(".T", "")
         return f"{symbol}.T"
+    if region == "Malaysia":
+        symbol = symbol.replace(".KL", "")
+        return f"{symbol}.KL"
 
     return symbol
 
@@ -117,7 +147,14 @@ def _row(ticker: str, company_name: str, region: str, exchange: str, sector: str
     }
 
 
-def _unique_first_100(rows: List[Dict]) -> List[Dict]:
+def _needs_company_name_resolution(row: Dict) -> bool:
+    name = str(row.get("company_name", "")).strip()
+    ticker = str(row.get("ticker", "")).strip()
+    base_ticker = re.sub(r"\.(T|KL|L)$", "", ticker, flags=re.IGNORECASE)
+    return not name or name.upper() in {ticker.upper(), base_ticker.upper()}
+
+
+def _unique_first_100(rows: List[Dict], limit: int = MIN_UNIVERSE_SIZE) -> List[Dict]:
     seen = set()
     unique_rows = []
     for row in rows:
@@ -126,7 +163,7 @@ def _unique_first_100(rows: List[Dict]) -> List[Dict]:
             continue
         seen.add(ticker)
         unique_rows.append(row)
-        if len(unique_rows) >= MIN_UNIVERSE_SIZE:
+        if limit and len(unique_rows) >= limit:
             break
     return unique_rows
 
@@ -177,10 +214,45 @@ def _extract_table_rows(region: str, html: str) -> List[Dict]:
             sector = cells[sector_idx] if sector_idx is not None and len(cells) > sector_idx else ""
             rows.append(_row(cells[symbol_idx], cells[name_idx], region, config["exchange"], sector))
 
-        if rows:
-            break
+    return _unique_first_100(rows, limit=None)
 
-    return _unique_first_100(rows)
+
+def _extract_companies_market_cap_rows(region: str, html: str) -> List[Dict]:
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        logger.warning("BeautifulSoup is unavailable; using static universe fallback")
+        return []
+
+    config = SOURCE_CONFIGS[region]
+    soup = BeautifulSoup(html, "html.parser")
+    rows = []
+
+    for table in soup.find_all("table"):
+        header_cells = table.find("tr")
+        if not header_cells:
+            continue
+
+        headers = [_normalize_header(cell.get_text(" ", strip=True)) for cell in header_cells.find_all(["th", "td"])]
+        name_idx = _find_header_index(headers, "name")
+        if name_idx is None:
+            continue
+
+        for tr in table.find_all("tr")[1:]:
+            cells = [cell.get_text(" ", strip=True) for cell in tr.find_all(["th", "td"])]
+            if len(cells) <= name_idx:
+                continue
+
+            name_text = cells[name_idx].strip()
+            match = re.search(config["regex"], name_text)
+            if not match:
+                continue
+
+            code = match.group(1)
+            company_name = re.sub(rf"\s*{re.escape(code)}\s*$", "", name_text).strip()
+            rows.append(_row(code, company_name, region, config["exchange"]))
+
+    return _unique_first_100(rows, limit=None)
 
 
 def _find_header_index(headers: List[str], target: str):
@@ -204,38 +276,130 @@ def _extract_regex_rows(region: str, html: str) -> List[Dict]:
         match = re.search(config["regex"], line)
         if not match:
             continue
-        name, code = match.groups()
+        groups = match.groups()
+        if len(groups) >= 2:
+            name, code = groups[:2]
+        else:
+            code = groups[0]
+            name = line.replace(code, "")
         name = re.sub(r"\s+", " ", name).strip(" -*")
         rows.append(_row(code, name, region, config["exchange"]))
-    return _unique_first_100(rows)
+    return _unique_first_100(rows, limit=None)
 
 
-def _fallback_rows(region: str) -> List[Dict]:
+def _fallback_rows(region: str, limit: int = MIN_UNIVERSE_SIZE) -> List[Dict]:
     exchange = SOURCE_CONFIGS[region]["exchange"]
     rows = [_row(symbol, symbol, region, exchange) for symbol in FALLBACK_SYMBOLS[region]]
-    return _unique_first_100(rows)
+    return _unique_first_100(rows, limit=limit)
+
+
+def _merge_with_fallback_order(region: str, source_rows: List[Dict]) -> List[Dict]:
+    """Keep the curated ticker order while using source rows for company names."""
+    source_by_ticker = {row["ticker"]: row for row in source_rows}
+    rows = []
+
+    for row in _fallback_rows(region, limit=None):
+        source_row = source_by_ticker.get(row["ticker"])
+        if source_row and not _needs_company_name_resolution(source_row):
+            row = {
+                **row,
+                "company_name": source_row["company_name"],
+                "sector": source_row.get("sector") or row["sector"],
+                "market_cap": source_row.get("market_cap") or row["market_cap"],
+            }
+        rows.append(row)
+
+    return _unique_first_100(rows + source_rows)
+
+
+def _lookup_yfinance_name(ticker: str) -> str:
+    if ticker in YFINANCE_NAME_CACHE:
+        return YFINANCE_NAME_CACHE[ticker]
+
+    name = ""
+    try:
+        import yfinance as yf
+
+        info = yf.Ticker(ticker).get_info()
+        for key in ["longName", "shortName", "displayName"]:
+            value = str(info.get(key, "")).strip()
+            if value:
+                name = value
+                break
+    except Exception as exc:
+        logger.debug(f"Could not resolve company name for {ticker}: {exc}")
+
+    YFINANCE_NAME_CACHE[ticker] = name
+    return name
+
+
+def _resolve_missing_company_names(rows: List[Dict]) -> List[Dict]:
+    missing = [row["ticker"] for row in rows if _needs_company_name_resolution(row)]
+    if not missing:
+        return rows
+
+    logger.info(f"Resolving company names for {len(missing)} fallback tickers")
+    resolved = {}
+    with ThreadPoolExecutor(max_workers=min(8, len(missing))) as executor:
+        future_by_ticker = {executor.submit(_lookup_yfinance_name, ticker): ticker for ticker in missing}
+        for future in as_completed(future_by_ticker):
+            ticker = future_by_ticker[future]
+            try:
+                name = future.result()
+            except Exception:
+                name = ""
+            if name:
+                resolved[ticker] = name
+
+    for row in rows:
+        if _needs_company_name_resolution(row) and row["ticker"] in resolved:
+            row["company_name"] = resolved[row["ticker"]]
+
+    return rows
 
 
 def build_universe(region: str) -> pd.DataFrame:
     """Build a 100-stock universe from live source tables, with static fallback."""
     config = SOURCE_CONFIGS[region]
     html = _fetch_html(config["url"])
-    rows = []
+    source_rows = []
 
     if html:
-        if "regex" in config:
-            rows = _extract_regex_rows(region, html)
+        if config.get("source_type") == "companiesmarketcap":
+            source_rows = _extract_companies_market_cap_rows(region, html)
+        elif "regex" in config:
+            source_rows = _extract_regex_rows(region, html)
         else:
-            rows = _extract_table_rows(region, html)
+            source_rows = _extract_table_rows(region, html)
+
+    if config.get("prefer_fallback_order"):
+        rows = _merge_with_fallback_order(region, source_rows)
+    else:
+        rows = source_rows
 
     if len(rows) < MIN_UNIVERSE_SIZE:
         logger.warning(
-            f"{region}: source yielded {len(rows)} usable tickers; using static {config['description']}"
+            f"{region}: source yielded {len(rows)} usable tickers; supplementing with static {config['description']}"
         )
-        rows = _fallback_rows(region)
+        rows = _unique_first_100(rows + _fallback_rows(region, limit=None))
 
     if len(rows) < MIN_UNIVERSE_SIZE:
         raise ValueError(f"{region}: universe fallback only has {len(rows)} tickers")
+
+    rows = _resolve_missing_company_names(rows[:MIN_UNIVERSE_SIZE])
+    if config.get("prefer_fallback_order"):
+        unresolved = [row["ticker"] for row in rows if _needs_company_name_resolution(row)]
+        if unresolved:
+            unresolved_tickers = set(unresolved)
+            logger.warning(
+                f"{region}: replacing unresolved/stale tickers with named constituents: {', '.join(unresolved)}"
+            )
+            rows = _unique_first_100(
+                [row for row in rows if not _needs_company_name_resolution(row)]
+                + [row for row in source_rows if row["ticker"] not in unresolved_tickers]
+                + [row for row in _fallback_rows(region, limit=None) if row["ticker"] not in unresolved_tickers]
+            )
+            rows = _resolve_missing_company_names(rows[:MIN_UNIVERSE_SIZE])
 
     return pd.DataFrame(rows[:MIN_UNIVERSE_SIZE], columns=REQUIRED_COLUMNS)
 
@@ -264,9 +428,12 @@ def _has_enough_real_tickers(df: pd.DataFrame) -> bool:
     return real_tickers["ticker"].nunique() >= MIN_UNIVERSE_SIZE
 
 
-def ensure_universe_files_exist(force: bool = False):
+def ensure_universe_files_exist(force: bool = False, regions: List[str] = None):
     """Create or repair universe CSV files so each region has 100 real tickers."""
-    for region in ["Asia", "Europe", "US"]:
+    regions = regions or list(SOURCE_CONFIGS.keys())
+    for region in regions:
+        if region not in SOURCE_CONFIGS:
+            raise ValueError(f"Unknown region: {region}")
         csv_path = f"data/universe/{region.lower()}_top100.csv"
         existing_df = _read_existing_universe(csv_path)
 
@@ -286,7 +453,7 @@ def load_universe(region: str) -> pd.DataFrame:
     Load the stock universe for a given region.
 
     Args:
-        region: "Asia", "Europe", or "US"
+        region: Region name such as "Asia", "Europe", "US", or "Malaysia"
 
     Returns:
         DataFrame with columns: ticker, company_name, region, exchange, sector, market_cap
@@ -295,7 +462,7 @@ def load_universe(region: str) -> pd.DataFrame:
     df = _read_existing_universe(csv_path)
 
     if not _has_enough_real_tickers(df):
-        ensure_universe_files_exist(force=True)
+        ensure_universe_files_exist(force=True, regions=[region])
         df = _read_existing_universe(csv_path)
 
     df = df[~df["ticker"].astype(str).str.contains("PLACEHOLDER", case=False, na=False)]
@@ -304,12 +471,13 @@ def load_universe(region: str) -> pd.DataFrame:
     return df
 
 
-def get_all_universes() -> dict:
+def get_all_universes(regions: List[str] = None) -> dict:
     """
     Load all universes.
 
     Returns:
         Dictionary with region names as keys and DataFrames as values
     """
-    ensure_universe_files_exist()
-    return {region: load_universe(region) for region in ["Asia", "Europe", "US"]}
+    regions = regions or list(SOURCE_CONFIGS.keys())
+    ensure_universe_files_exist(regions=regions)
+    return {region: load_universe(region) for region in regions}

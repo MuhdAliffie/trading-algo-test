@@ -21,6 +21,10 @@ REGIONS = {
     "US": {
         "universe_file": "data/universe/us_top100.csv",
         "description": "US top 100 stocks by market cap"
+    },
+    "Malaysia": {
+        "universe_file": "data/universe/malaysia_top100.csv",
+        "description": "Malaysia top 100 Bursa Malaysia stocks"
     }
 }
 

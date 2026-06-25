@@ -175,6 +175,43 @@ def _active_buy_keys(signals_df: pd.DataFrame) -> set[tuple[str, str, str]]:
     ))
 
 
+def parse_date_window(start_date: str | None, end_date: str | None) -> tuple[pd.Timestamp | None, pd.Timestamp | None]:
+    """Parse Dash date-picker values into an inclusive timestamp window."""
+    start_ts = pd.to_datetime(start_date, errors="coerce") if start_date else None
+    end_ts = pd.to_datetime(end_date, errors="coerce") if end_date else None
+
+    if start_ts is not None and pd.isna(start_ts):
+        start_ts = None
+    if end_ts is not None and pd.isna(end_ts):
+        end_ts = None
+
+    if end_ts is not None:
+        end_ts = end_ts + pd.Timedelta(days=1) - pd.Timedelta(microseconds=1)
+
+    return start_ts, end_ts
+
+
+def date_window_mask(series: pd.Series, start_ts: pd.Timestamp | None, end_ts: pd.Timestamp | None) -> pd.Series:
+    """Return rows where a date series falls inside the selected window."""
+    mask = series.notna()
+    if start_ts is not None:
+        mask &= series >= start_ts
+    if end_ts is not None:
+        mask &= series <= end_ts
+    return mask
+
+
+def filter_sell_date_window(
+    df: pd.DataFrame,
+    start_ts: pd.Timestamp | None,
+    end_ts: pd.Timestamp | None,
+) -> pd.DataFrame:
+    """Keep completed trades whose sell date is inside the selected window."""
+    if df.empty or "sell_date" not in df.columns:
+        return df.iloc[0:0]
+    return df[date_window_mask(df["sell_date"], start_ts, end_ts)]
+
+
 def apply_filters(
     df: pd.DataFrame,
     selected_regions: list[str] | None,
@@ -202,12 +239,11 @@ def apply_filters(
     if selected_tickers:
         filtered = filtered[filtered["ticker"].isin(selected_tickers)]
 
-    if start_date and end_date:
-        start_ts = pd.Timestamp(start_date)
-        end_ts = pd.Timestamp(end_date) + pd.Timedelta(days=1) - pd.Timedelta(seconds=1)
+    start_ts, end_ts = parse_date_window(start_date, end_date)
+    if start_ts is not None or end_ts is not None:
         filtered = filtered[
-            filtered["buy_date"].between(start_ts, end_ts)
-            | filtered["sell_date"].between(start_ts, end_ts)
+            date_window_mask(filtered["buy_date"], start_ts, end_ts)
+            | date_window_mask(filtered["sell_date"], start_ts, end_ts)
         ]
 
     if trade_status == "completed":
@@ -260,7 +296,29 @@ def _blank_figure(title: str) -> go.Figure:
     return fig
 
 
-def plot_money_movement(df: pd.DataFrame, initial_capital: float = DEFAULT_INITIAL_CAPITAL) -> go.Figure:
+def apply_xaxis_date_window(
+    fig: go.Figure,
+    start_ts: pd.Timestamp | None,
+    end_ts: pd.Timestamp | None,
+) -> go.Figure:
+    """Constrain a time-series figure to the selected date range."""
+    if start_ts is None and end_ts is None:
+        return fig
+
+    axis_range = [
+        start_ts if start_ts is not None else None,
+        end_ts if end_ts is not None else None,
+    ]
+    fig.update_xaxes(range=axis_range)
+    return fig
+
+
+def plot_money_movement(
+    df: pd.DataFrame,
+    start_ts: pd.Timestamp | None = None,
+    end_ts: pd.Timestamp | None = None,
+    initial_capital: float = DEFAULT_INITIAL_CAPITAL,
+) -> go.Figure:
     """
     Plot estimated capital by strategy.
 
@@ -272,11 +330,14 @@ def plot_money_movement(df: pd.DataFrame, initial_capital: float = DEFAULT_INITI
     fig = _blank_figure("Money Movement by Strategy")
 
     if completed.empty:
-        return fig
+        return apply_xaxis_date_window(fig, start_ts, end_ts)
 
     if "portfolio_value" in completed.columns and completed["portfolio_value"].notna().any():
         for strategy, strategy_df in completed.groupby("strategy"):
-            path = strategy_df.dropna(subset=["sell_date", "portfolio_value"]).sort_values("sell_date")
+            path = strategy_df.dropna(subset=["sell_date", "portfolio_value"]).copy()
+            path = path[date_window_mask(path["sell_date"], start_ts, end_ts)].sort_values("sell_date")
+            if path.empty:
+                continue
             fig.add_trace(go.Scattergl(
                 x=path["sell_date"],
                 y=path["portfolio_value"],
@@ -285,6 +346,7 @@ def plot_money_movement(df: pd.DataFrame, initial_capital: float = DEFAULT_INITI
             ))
     else:
         for strategy, strategy_df in completed.groupby("strategy"):
+            strategy_df = strategy_df[date_window_mask(strategy_df["sell_date"], start_ts, end_ts)]
             daily_roi = (
                 strategy_df
                 .dropna(subset=["sell_date", "roi_decimal"])
@@ -311,30 +373,36 @@ def plot_money_movement(df: pd.DataFrame, initial_capital: float = DEFAULT_INITI
         legend_title="Strategy",
     )
     fig.update_yaxes(tickprefix="$", separatethousands=True)
-    return fig
+    return apply_xaxis_date_window(fig, start_ts, end_ts)
 
 
-def plot_trade_timeline(df: pd.DataFrame, chart_limit: int) -> go.Figure:
+def plot_trade_timeline(
+    df: pd.DataFrame,
+    chart_limit: int,
+    start_ts: pd.Timestamp | None = None,
+    end_ts: pd.Timestamp | None = None,
+) -> go.Figure:
     """Plot BUY and SELL events for filtered trades."""
     fig = _blank_figure("Buy/Sell Timeline")
     if df.empty:
-        return fig
+        return apply_xaxis_date_window(fig, start_ts, end_ts)
 
-    chart_df = df.sort_values("sell_date").tail(chart_limit).copy()
-
-    buy_events = chart_df[
+    buy_events = df[
         ["region", "ticker", "company_name", "strategy", "buy_date", "buy_price", "roi_pct"]
     ].rename(columns={"buy_date": "date", "buy_price": "price"})
     buy_events["event"] = "BUY"
 
-    sell_events = chart_df[
+    sell_events = df[
         ["region", "ticker", "company_name", "strategy", "sell_date", "sell_price", "roi_pct"]
     ].rename(columns={"sell_date": "date", "sell_price": "price"})
     sell_events["event"] = "SELL"
 
     events = pd.concat([buy_events, sell_events], ignore_index=True).dropna(subset=["date"])
+    events = events[date_window_mask(events["date"], start_ts, end_ts)]
     if events.empty:
-        return fig
+        return apply_xaxis_date_window(fig, start_ts, end_ts)
+
+    events = events.sort_values("date").tail(chart_limit).copy()
 
     events["asset"] = events["strategy"] + " | " + events["ticker"]
     events["marker_color"] = np.where(events["event"] == "BUY", "#1f77b4", "#d62728")
@@ -371,17 +439,26 @@ def plot_trade_timeline(df: pd.DataFrame, chart_limit: int) -> go.Figure:
             ),
         ))
 
-    if len(df) > len(chart_df):
-        fig.update_layout(title=f"Buy/Sell Timeline, latest {len(chart_df):,} trades")
+    if len(events) >= chart_limit:
+        fig.update_layout(title=f"Buy/Sell Timeline, latest {len(events):,} events")
     fig.update_layout(xaxis_title="Date", yaxis_title="Strategy and ticker", legend_title="Event")
-    return fig
+    return apply_xaxis_date_window(fig, start_ts, end_ts)
 
 
-def plot_roi_bar_chart(df: pd.DataFrame, chart_limit: int) -> go.Figure:
+def plot_roi_bar_chart(
+    df: pd.DataFrame,
+    chart_limit: int,
+    start_ts: pd.Timestamp | None = None,
+    end_ts: pd.Timestamp | None = None,
+) -> go.Figure:
     """Plot ROI percentage after each completed sell."""
     completed = df[df["sell_date"].notna()].copy()
     fig = _blank_figure("ROI After Each Sell")
 
+    if completed.empty:
+        return fig
+
+    completed = completed[date_window_mask(completed["sell_date"], start_ts, end_ts)]
     if completed.empty:
         return fig
 
@@ -511,11 +588,12 @@ app.index_string = """
         {%favicon%}
         {%css%}
         <style>
-            body { margin: 0; font-family: Arial, sans-serif; background: #f6f7f9; color: #171717; }
-            .page { padding: 24px; }
-            .shell { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 18px; align-items: start; overflow: visible; }
-            .sidebar { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 16px; position: sticky; top: 18px; z-index: 5000; overflow: visible; }
-            .main { min-width: 0; position: relative; z-index: 1; }
+            html, body { height: 100%; }
+            body { margin: 0; font-family: Arial, sans-serif; background: #f6f7f9; color: #171717; overflow: hidden; }
+            .page { height: 100vh; box-sizing: border-box; padding: 24px; display: flex; flex-direction: column; overflow: hidden; }
+            .shell { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 18px; align-items: stretch; overflow: visible; }
+            .sidebar { min-height: 0; background: white; border: 1px solid #ddd; border-radius: 8px; padding: 16px; position: relative; z-index: 5000; overflow-y: auto; overscroll-behavior: contain; }
+            .main { min-width: 0; min-height: 0; position: relative; z-index: 1; overflow-y: auto; overscroll-behavior: contain; padding-right: 4px; }
             .panel { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 14px; margin-bottom: 16px; position: relative; z-index: 1; }
             .metrics { display: grid; grid-template-columns: repeat(7, minmax(120px, 1fr)); gap: 10px; margin-bottom: 16px; }
             .metric-card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 12px; min-height: 72px; }
@@ -523,6 +601,9 @@ app.index_string = """
             .metric-value { font-weight: 700; font-size: 20px; }
             .control-label { font-weight: 700; margin: 14px 0 6px; display: block; }
             .note, .notice { color: #555; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin: 12px 0 16px; }
+            .filter-action { width: 100%; margin: 2px 0 6px; padding: 8px 10px; border: 1px solid #bbb; border-radius: 6px; background: #f8f9fa; cursor: pointer; }
+            .filter-action:hover { background: #eef1f4; }
+            .number-input { width: 100%; box-sizing: border-box; padding: 8px 10px; border: 1px solid #bbb; border-radius: 6px; font-size: 14px; }
             .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td,
             .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th { font-family: Arial, sans-serif; }
             .DateRangePicker, .DateRangePickerInput, .DateInput { position: relative; z-index: 6000; }
@@ -538,7 +619,10 @@ app.index_string = """
             }
             @media (max-width: 1000px) {
                 .shell { grid-template-columns: 1fr; }
-                .sidebar { position: static; }
+                body { overflow: auto; }
+                .page { height: auto; min-height: 100vh; overflow: visible; }
+                .shell { overflow: visible; }
+                .sidebar, .main { overflow: visible; }
                 .metrics { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
             }
         </style>
@@ -581,6 +665,12 @@ else:
                                 placeholder="All regions",
                             ),
                             html.Label("Strategies", className="control-label"),
+                            html.Button(
+                                "Clear strategies",
+                                id="clear-strategies-button",
+                                n_clicks=0,
+                                className="filter-action",
+                            ),
                             dcc.Checklist(
                                 id="strategy-filter",
                                 options=[
@@ -607,6 +697,7 @@ else:
                                 start_date=MIN_DATE.date(),
                                 end_date=MAX_DATE.date(),
                                 display_format="YYYY-MM-DD",
+                                with_portal=True,
                             ),
                             html.Label("Trade status", className="control-label"),
                             dcc.Dropdown(
@@ -616,14 +707,14 @@ else:
                                 clearable=False,
                             ),
                             html.Label("Max trades drawn", className="control-label"),
-                            dcc.Slider(
+                            dcc.Input(
                                 id="chart-limit",
-                                min=500,
-                                max=10000,
-                                step=500,
+                                type="number",
+                                min=1,
+                                step=1,
                                 value=3000,
-                                marks={500: "500", 3000: "3k", 10000: "10k"},
-                                tooltip={"placement": "bottom", "always_visible": False},
+                                debounce=True,
+                                className="number-input",
                             ),
                             html.Button("Download filtered table", id="download-button", n_clicks=0),
                             dcc.Download(id="download-data"),
@@ -688,6 +779,17 @@ def update_ticker_options(selected_regions, selected_tickers):
 
 
 @app.callback(
+    Output("strategy-filter", "value"),
+    Input("clear-strategies-button", "n_clicks"),
+    prevent_initial_call=True,
+)
+def clear_strategy_selection(n_clicks):
+    if not n_clicks:
+        raise PreventUpdate
+    return []
+
+
+@app.callback(
     Output("summary-metrics", "children"),
     Output("money-movement", "figure"),
     Output("trade-timeline", "figure"),
@@ -712,6 +814,7 @@ def update_dashboard(
     trade_status,
     chart_limit,
 ):
+    start_ts, end_ts = parse_date_window(start_date, end_date)
     filtered = apply_filters(
         TRADES,
         selected_regions=selected_regions,
@@ -726,9 +829,11 @@ def update_dashboard(
     if filtered.empty:
         empty_message = html.Div("No trades match the selected filters.", className="notice")
         blank = _blank_figure("No matching data")
+        blank = apply_xaxis_date_window(blank, start_ts, end_ts)
         return [], blank, blank, blank, [], [], empty_message
 
-    metrics = calculate_summary_metrics(filtered)
+    sell_window_trades = filter_sell_date_window(filtered, start_ts, end_ts)
+    metrics = calculate_summary_metrics(sell_window_trades)
     metric_children = [
         metric_card("Total trades", f"{metrics['total_trades']:,}"),
         metric_card("Average ROI", format_percent(metrics["average_roi"])),
@@ -739,14 +844,14 @@ def update_dashboard(
         metric_card("Avg holding", format_number(metrics["average_holding_duration"], " days")),
     ]
 
-    trade_table = render_trade_table(filtered)
+    trade_table = render_trade_table(sell_window_trades)
     columns = [{"name": column, "id": column} for column in trade_table.columns]
 
     return (
         metric_children,
-        plot_money_movement(filtered),
-        plot_trade_timeline(filtered, int(chart_limit or 3000)),
-        plot_roi_bar_chart(filtered, int(chart_limit or 3000)),
+        plot_money_movement(sell_window_trades, start_ts, end_ts),
+        plot_trade_timeline(filtered, int(chart_limit or 3000), start_ts, end_ts),
+        plot_roi_bar_chart(sell_window_trades, int(chart_limit or 3000), start_ts, end_ts),
         trade_table.to_dict("records"),
         columns,
         "",
@@ -786,7 +891,8 @@ def download_filtered_table(
         trade_status=trade_status,
         active_buy_keys=ACTIVE_BUY_KEYS,
     )
-    table = render_trade_table(filtered)
+    start_ts, end_ts = parse_date_window(start_date, end_date)
+    table = render_trade_table(filter_sell_date_window(filtered, start_ts, end_ts))
     return dcc.send_data_frame(table.to_csv, "filtered_trade_history.csv", index=False)
 
 

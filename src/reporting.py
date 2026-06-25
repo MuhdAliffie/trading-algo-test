@@ -34,6 +34,11 @@ def create_report(results_df: pd.DataFrame, universe_info: Dict,
         output_file: Output file path
     """
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
+    results_df = results_df.copy()
+    for date_col in ['start_date', 'end_date', 'latest_signal_date']:
+        if date_col in results_df.columns:
+            results_df[date_col] = pd.to_datetime(results_df[date_col], errors='coerce')
     
     with open(output_file, 'w', encoding='utf-8') as f:
         # Header
@@ -43,7 +48,11 @@ def create_report(results_df: pd.DataFrame, universe_info: Dict,
         # 1. Objective
         f.write("## 1. Objective\n\n")
         strategy_names = sorted(results_df['strategy'].dropna().unique())
-        f.write(f"This study compares {len(strategy_names)} technical analysis strategies across Asia, Europe, and US stock markets:\n\n")
+        region_names = sorted(results_df['region'].dropna().unique())
+        f.write(
+            f"This study compares {len(strategy_names)} technical analysis strategies "
+            f"across {', '.join(region_names)} stock markets:\n\n"
+        )
         for strategy in strategy_names:
             f.write(f"- **{strategy}**\n")
         f.write("\n")
@@ -58,12 +67,15 @@ def create_report(results_df: pd.DataFrame, universe_info: Dict,
         
         f.write(f"- **Data Source**: Yahoo Finance (yfinance)\n")
         f.write(f"- **Data Frequency**: Daily OHLCV\n")
-        f.write(f"- **Date Range**: {results_df['start_date'].min().strftime('%Y-%m-%d')} to {results_df['end_date'].max().strftime('%Y-%m-%d')}\n")
+        start_date = pd.to_datetime(results_df['start_date'], errors='coerce').min()
+        end_date = pd.to_datetime(results_df['end_date'], errors='coerce').max()
+        f.write(f"- **Date Range**: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}\n")
         f.write(f"- **Total Stocks Tested**: {total_stocks}\n")
-        f.write(f"- **Total Results (Stocks × Strategies)**: {total_results}\n\n")
+        f.write(f"- **Total Results (Stocks x Strategies)**: {total_results}\n\n")
         
         f.write("### Stocks by Region:\n\n")
-        for region, info in universe_info.items():
+        for region in sorted(results_df['region'].dropna().unique()):
+            info = universe_info.get(region, {})
             region_stocks = results_df[results_df['region'] == region]['ticker'].nunique()
             f.write(f"- **{region}**: {region_stocks} stocks ({info.get('description', 'N/A')})\n")
         f.write("\n")
@@ -206,6 +218,9 @@ def create_report(results_df: pd.DataFrame, universe_info: Dict,
 
         if trade_history_df is not None and not trade_history_df.empty:
             trades = trade_history_df.copy()
+            for date_col in ['buy_date', 'sell_date']:
+                if date_col in trades.columns:
+                    trades[date_col] = pd.to_datetime(trades[date_col], errors='coerce')
             trades['roi_after_sell'] = pd.to_numeric(trades['roi_after_sell'], errors='coerce')
             trades['holding_period_days'] = pd.to_numeric(trades['holding_period_days'], errors='coerce')
             trades = trades.dropna(subset=['roi_after_sell'])

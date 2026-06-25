@@ -566,21 +566,23 @@ def plot_trade_timeline_by_region_strategy(trade_history_df: pd.DataFrame,
     Returns:
         Paths to saved figures
     """
-    ensure_output_dir(output_dir)
-
-    for filename in os.listdir(output_dir):
-        if filename.startswith('trade_timeline_') and filename.endswith('.png'):
-            os.remove(os.path.join(output_dir, filename))
-
     if trade_history_df is None or trade_history_df.empty:
         logger.warning("No trade history available for timeline charts")
         return []
 
+    ensure_output_dir(output_dir)
     data = trade_history_df.copy()
     data['buy_date'] = pd.to_datetime(data['buy_date'], errors='coerce')
     data['sell_date'] = pd.to_datetime(data['sell_date'], errors='coerce')
     data['roi_after_sell'] = pd.to_numeric(data['roi_after_sell'], errors='coerce')
     data = data.dropna(subset=['buy_date', 'sell_date', 'roi_after_sell'])
+
+    region_slugs = {slugify(region) for region in data['region'].dropna().unique()}
+    for filename in os.listdir(output_dir):
+        if not filename.startswith('trade_timeline_') or not filename.endswith('.png'):
+            continue
+        if any(filename.startswith(f'trade_timeline_{region_slug}_') for region_slug in region_slugs):
+            os.remove(os.path.join(output_dir, filename))
 
     chart_paths = []
     for region in sorted(data['region'].dropna().unique()):

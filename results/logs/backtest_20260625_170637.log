@@ -1,0 +1,260 @@
+2026-06-25 17:06:37,265 - __main__ - INFO - ================================================================================
+2026-06-25 17:06:37,266 - __main__ - INFO - TRADING STRATEGY BACKTESTING SYSTEM
+2026-06-25 17:06:37,266 - __main__ - INFO - ================================================================================
+2026-06-25 17:06:37,267 - __main__ - INFO - Start time: 2026-06-25 17:06:37.267436
+2026-06-25 17:06:37,268 - __main__ - INFO - Backtest period: 2021-06-26 to 2026-06-25
+2026-06-25 17:06:37,268 - __main__ - INFO - Regions: Malaysia
+2026-06-25 17:06:37,269 - __main__ - INFO - Merge existing outputs: True
+2026-06-25 17:06:37,269 - __main__ - INFO - Strategies: RSI, ADX_DI, ATR_Breakout, SMA_Crossover, EMA_Crossover, MACD, Bollinger_Mean_Reversion, Stochastic, CCI, MFI, OBV, VWAP, Supertrend, Parabolic_SAR, Williams_R, ROC_Momentum, Donchian_Channel, Keltner_Channel
+2026-06-25 17:06:37,270 - __main__ - INFO - Max workers: 4
+2026-06-25 17:06:37,270 - __main__ - INFO - 
+================================================================================
+2026-06-25 17:06:37,270 - __main__ - INFO - STEP 1: UNIVERSE CREATION
+2026-06-25 17:06:37,271 - __main__ - INFO - ================================================================================
+2026-06-25 17:06:37,271 - src.universe - INFO - Rebuilding universe file: data/universe/malaysia_top100.csv
+2026-06-25 17:06:38,270 - src.universe - WARNING - Malaysia: source yielded 39 usable tickers; supplementing with static Largest Bursa Malaysia listed companies by market capitalization
+2026-06-25 17:06:38,289 - src.universe - INFO - Wrote 100 stocks to data/universe/malaysia_top100.csv
+2026-06-25 17:06:38,296 - src.universe - INFO - Universe file is valid: data/universe/malaysia_top100.csv (100 rows)
+2026-06-25 17:06:38,304 - src.universe - INFO - Loaded 100 stocks for Malaysia
+2026-06-25 17:06:38,305 - __main__ - INFO - Malaysia: 100 stocks loaded
+2026-06-25 17:06:38,305 - __main__ - INFO - 
+================================================================================
+2026-06-25 17:06:38,306 - __main__ - INFO - STEP 2: PARALLEL BACKTESTING
+2026-06-25 17:06:38,306 - __main__ - INFO - ================================================================================
+2026-06-25 17:06:38,307 - __main__ - INFO - 
+Processing Malaysia...
+2026-06-25 17:06:40,234 - src.data_loader - INFO - 5347.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:06:40,237 - src.data_loader - INFO - 1295.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:06:40,240 - src.data_loader - INFO - 1023.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:06:40,243 - src.data_loader - INFO - 1155.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:06:58,214 - src.data_loader - INFO - 5225.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:06:59,068 - src.data_loader - INFO - 5285.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:00,522 - src.data_loader - INFO - 5819.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:00,656 - src.data_loader - INFO - 8869.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:04,906 - src.data_loader - INFO - 6742.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:14,206 - src.data_loader - INFO - 3816.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:14,971 - src.data_loader - INFO - 5211.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:15,591 - src.data_loader - INFO - 6033.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:21,745 - src.data_loader - INFO - 6947.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:28,371 - src.data_loader - INFO - 5183.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:30,404 - src.data_loader - INFO - 5326.KL: Downloaded 440 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:30,863 - src.data_loader - INFO - 4863.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:38,751 - src.data_loader - INFO - 1961.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:39,438 - src.data_loader - INFO - 6012.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:42,471 - src.data_loader - INFO - 5398.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:46,590 - src.data_loader - INFO - 2445.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:55,255 - src.data_loader - INFO - 4707.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:55,373 - src.data_loader - INFO - 4677.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:07:59,237 - src.data_loader - INFO - 1082.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:01,469 - src.data_loader - INFO - 5246.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:11,670 - src.data_loader - INFO - 5235SS.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:12,040 - src.data_loader - INFO - 6888.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:15,039 - src.data_loader - INFO - 5296.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:18,076 - src.data_loader - INFO - 4197.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:28,023 - src.data_loader - INFO - 4065.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:28,139 - src.data_loader - INFO - 7084.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:31,435 - src.data_loader - INFO - 4715.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:35,172 - src.data_loader - INFO - 7277.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:44,503 - src.data_loader - INFO - 3182.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:44,604 - src.data_loader - INFO - 3255.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:48,707 - src.data_loader - INFO - 7113.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:08:53,403 - src.data_loader - INFO - 5258.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:00,204 - src.data_loader - INFO - 5168.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:00,368 - src.data_loader - INFO - 7153.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:04,976 - src.data_loader - INFO - 3026.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:09,942 - src.data_loader - INFO - 5983.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:14,355 - src.data_loader - INFO - 5099.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:17,389 - src.data_loader - INFO - 7106.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:21,071 - src.data_loader - INFO - 5274.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:25,533 - src.data_loader - INFO - 9997.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:30,661 - src.data_loader - INFO - 1818.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:32,896 - src.data_loader - INFO - 1015.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:38,318 - src.data_loader - INFO - 1066.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:41,285 - src.data_loader - INFO - 2488.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:46,155 - src.data_loader - INFO - 5288.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:49,871 - src.data_loader - INFO - 5176.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:54,888 - src.data_loader - INFO - 5125.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:09:57,470 - src.data_loader - INFO - 5227.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:01,873 - yfinance - ERROR - $5014.KL: possibly delisted; no timezone found
+2026-06-25 17:10:01,907 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 17:10:01,936 - yfinance - ERROR - ['5014.KL']: possibly delisted; no timezone found
+2026-06-25 17:10:02,223 - src.data_loader - WARNING - No data downloaded for 5014.KL
+2026-06-25 17:10:02,253 - src.data_loader - WARNING - 5014.KL: No data available
+2026-06-25 17:10:04,772 - src.data_loader - INFO - 5878.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:05,222 - src.data_loader - INFO - 0166.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:09,316 - src.data_loader - INFO - 0097.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:12,306 - src.data_loader - INFO - 5292.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:20,406 - src.data_loader - INFO - 5286.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:21,438 - src.data_loader - INFO - 7204.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:27,123 - src.data_loader - INFO - 5302.KL: Downloaded 1107 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:28,476 - src.data_loader - INFO - 3689.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:36,355 - src.data_loader - INFO - 2836.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:38,971 - src.data_loader - INFO - 1899.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:42,875 - src.data_loader - INFO - 3336.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:45,598 - src.data_loader - INFO - 9679.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:51,370 - src.data_loader - INFO - 5209.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:10:56,056 - src.data_loader - INFO - 5253.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:00,648 - src.data_loader - INFO - 5228.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:04,040 - src.data_loader - INFO - 3034.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:08,805 - src.data_loader - INFO - 1562.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:12,139 - src.data_loader - INFO - 5008.KL: Downloaded 1224 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:18,173 - src.data_loader - INFO - 5072.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:21,419 - src.data_loader - INFO - 5916.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:26,238 - src.data_loader - INFO - 9822.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:28,769 - src.data_loader - INFO - 7034.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:34,522 - src.data_loader - INFO - 7052.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:37,571 - src.data_loader - INFO - 5139.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:42,155 - src.data_loader - INFO - 5148.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:44,955 - src.data_loader - INFO - 5186.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:51,955 - src.data_loader - INFO - 5199.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:54,871 - src.data_loader - INFO - 5250.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:11:57,129 - src.data_loader - INFO - 5257.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:01,694 - src.data_loader - INFO - 5318.KL: Downloaded 762 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:12,239 - src.data_loader - INFO - 5138.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:12,687 - src.data_loader - INFO - 5172.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:14,849 - src.data_loader - INFO - 5248.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:20,528 - src.data_loader - INFO - 5020.KL: Downloaded 1225 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:27,746 - src.data_loader - INFO - 5106.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:27,962 - src.data_loader - INFO - 5069.KL: Downloaded 1225 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:31,490 - src.data_loader - INFO - 5147.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:37,570 - src.data_loader - INFO - 5200.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:44,001 - src.data_loader - INFO - 5210.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:44,411 - src.data_loader - INFO - 5272.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:47,488 - src.data_loader - INFO - 5284.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:53,187 - src.data_loader - INFO - 5291.KL: Downloaded 1224 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:12:59,536 - src.data_loader - INFO - 5301.KL: Downloaded 1208 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:13:00,021 - src.data_loader - INFO - 7054.KL: Downloaded 1226 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:13:03,269 - src.data_loader - INFO - 7078.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:13:12,453 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 7164.KL"}}}
+2026-06-25 17:13:13,770 - yfinance - ERROR - $7164.KL: possibly delisted; no timezone found
+2026-06-25 17:13:13,831 - yfinance - ERROR - 
+1 Failed download:
+2026-06-25 17:13:13,837 - yfinance - ERROR - ['7164.KL']: possibly delisted; no timezone found
+2026-06-25 17:13:13,912 - src.data_loader - WARNING - No data downloaded for 7164.KL
+2026-06-25 17:13:13,951 - src.data_loader - WARNING - 7164.KL: No data available
+2026-06-25 17:13:16,179 - src.data_loader - INFO - 7202.KL: Downloaded 1223 rows from 2021-06-26 to 2026-06-25
+2026-06-25 17:13:26,745 - __main__ - INFO - Malaysia Summary:
+2026-06-25 17:13:26,745 - __main__ - INFO -   - Successful: 98
+2026-06-25 17:13:26,745 - __main__ - INFO -   - Errors: 0
+2026-06-25 17:13:26,746 - __main__ - INFO -   - Skipped: 2
+2026-06-25 17:13:26,751 - __main__ - INFO -   - Saved skipped to: results/combined\malaysia_skipped.csv
+2026-06-25 17:13:26,751 - __main__ - INFO - 
+================================================================================
+2026-06-25 17:13:26,752 - __main__ - INFO - STEP 3: AGGREGATING RESULTS
+2026-06-25 17:13:26,752 - __main__ - INFO - ================================================================================
+2026-06-25 17:13:26,766 - __main__ - INFO - Run results: 1764
+2026-06-25 17:13:26,767 - __main__ - INFO - Total stocks tested: 100
+2026-06-25 17:13:26,768 - __main__ - INFO - Unique tickers in run: 98
+2026-06-25 17:13:27,069 - __main__ - INFO - Merging selected regions into existing combined outputs: Malaysia
+2026-06-25 17:13:27,796 - __main__ - INFO - Saved combined results to: results/combined\all_strategy_results.csv
+2026-06-25 17:13:30,090 - __main__ - INFO - Saved trade history to: results/combined\trade_history.csv
+2026-06-25 17:13:30,136 - __main__ - INFO - Saved latest signals to: results/combined\latest_signals.csv
+2026-06-25 17:13:30,137 - __main__ - INFO - 
+================================================================================
+2026-06-25 17:13:30,137 - __main__ - INFO - STEP 4: GENERATING VISUALIZATIONS
+2026-06-25 17:13:30,137 - __main__ - INFO - ================================================================================
+2026-06-25 17:13:45,215 - src.visualization - INFO - Saved chart: results/charts\malaysia_equity_curve_by_strategy.png
+2026-06-25 17:13:45,748 - src.visualization - INFO - Saved chart: results/charts\malaysia_signal_distribution.png
+2026-06-25 17:13:46,301 - src.visualization - INFO - Saved chart: results/charts\malaysia_top_10_stocks.png
+2026-06-25 17:13:46,927 - src.visualization - INFO - Saved chart: results/charts\malaysia_worst_10_stocks.png
+2026-06-25 17:13:51,610 - src.visualization - INFO - Saved chart: results/charts\malaysia_strategy_vs_buyhold.png
+2026-06-25 17:13:52,420 - src.visualization - INFO - Saved chart: results/charts\average_return_by_strategy_region.png
+2026-06-25 17:13:53,238 - src.visualization - INFO - Saved chart: results/charts\sharpe_ratio_comparison.png
+2026-06-25 17:13:54,084 - src.visualization - INFO - Saved chart: results/charts\max_drawdown_comparison.png
+2026-06-25 17:13:55,555 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_adx_di.png
+2026-06-25 17:13:56,661 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_atr_breakout.png
+2026-06-25 17:13:57,754 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_bollinger_mean_reversion.png
+2026-06-25 17:13:59,020 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_cci.png
+2026-06-25 17:14:00,116 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_donchian_channel.png
+2026-06-25 17:14:01,037 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_ema_crossover.png
+2026-06-25 17:14:02,067 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_keltner_channel.png
+2026-06-25 17:14:03,271 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_macd.png
+2026-06-25 17:14:04,238 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_mfi.png
+2026-06-25 17:14:05,434 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_obv.png
+2026-06-25 17:14:06,543 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_parabolic_sar.png
+2026-06-25 17:14:07,783 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_roc_momentum.png
+2026-06-25 17:14:08,808 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_rsi.png
+2026-06-25 17:14:09,849 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_sma_crossover.png
+2026-06-25 17:14:10,911 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_stochastic.png
+2026-06-25 17:14:12,000 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_supertrend.png
+2026-06-25 17:14:13,044 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_vwap.png
+2026-06-25 17:14:14,125 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_asia_williams_r.png
+2026-06-25 17:14:15,150 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_adx_di.png
+2026-06-25 17:14:16,065 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_atr_breakout.png
+2026-06-25 17:14:17,136 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_bollinger_mean_reversion.png
+2026-06-25 17:14:18,251 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_cci.png
+2026-06-25 17:14:19,295 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_donchian_channel.png
+2026-06-25 17:14:20,720 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_ema_crossover.png
+2026-06-25 17:14:21,894 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_keltner_channel.png
+2026-06-25 17:14:22,957 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_macd.png
+2026-06-25 17:14:23,875 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_mfi.png
+2026-06-25 17:14:25,095 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_obv.png
+2026-06-25 17:14:26,176 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_parabolic_sar.png
+2026-06-25 17:14:28,378 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_roc_momentum.png
+2026-06-25 17:14:30,668 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_rsi.png
+2026-06-25 17:14:31,801 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_sma_crossover.png
+2026-06-25 17:14:32,744 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_stochastic.png
+2026-06-25 17:14:33,714 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_supertrend.png
+2026-06-25 17:14:34,542 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_vwap.png
+2026-06-25 17:14:35,610 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_europe_williams_r.png
+2026-06-25 17:14:36,708 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_adx_di.png
+2026-06-25 17:14:37,628 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_atr_breakout.png
+2026-06-25 17:14:38,726 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_bollinger_mean_reversion.png
+2026-06-25 17:14:39,932 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_cci.png
+2026-06-25 17:14:40,956 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_donchian_channel.png
+2026-06-25 17:14:42,210 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_ema_crossover.png
+2026-06-25 17:14:43,160 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_keltner_channel.png
+2026-06-25 17:14:44,299 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_macd.png
+2026-06-25 17:14:45,220 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_mfi.png
+2026-06-25 17:14:46,325 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_obv.png
+2026-06-25 17:14:47,941 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_parabolic_sar.png
+2026-06-25 17:14:49,515 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_roc_momentum.png
+2026-06-25 17:14:50,575 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_rsi.png
+2026-06-25 17:14:51,485 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_sma_crossover.png
+2026-06-25 17:14:52,567 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_stochastic.png
+2026-06-25 17:14:53,649 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_supertrend.png
+2026-06-25 17:14:55,580 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_vwap.png
+2026-06-25 17:14:57,593 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_malaysia_williams_r.png
+2026-06-25 17:14:58,930 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_adx_di.png
+2026-06-25 17:15:00,244 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_atr_breakout.png
+2026-06-25 17:15:01,798 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_bollinger_mean_reversion.png
+2026-06-25 17:15:03,064 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_cci.png
+2026-06-25 17:15:04,046 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_donchian_channel.png
+2026-06-25 17:15:04,927 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_ema_crossover.png
+2026-06-25 17:15:05,839 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_keltner_channel.png
+2026-06-25 17:15:06,899 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_macd.png
+2026-06-25 17:15:07,833 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_mfi.png
+2026-06-25 17:15:09,607 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_obv.png
+2026-06-25 17:15:10,991 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_parabolic_sar.png
+2026-06-25 17:15:12,517 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_roc_momentum.png
+2026-06-25 17:15:13,701 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_rsi.png
+2026-06-25 17:15:14,800 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_sma_crossover.png
+2026-06-25 17:15:16,120 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_stochastic.png
+2026-06-25 17:15:17,122 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_supertrend.png
+2026-06-25 17:15:18,063 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_vwap.png
+2026-06-25 17:15:19,382 - src.visualization - INFO - Saved chart: results/charts\trade_timeline_us_williams_r.png
+2026-06-25 17:15:19,384 - __main__ - INFO - Visualizations generated successfully
+2026-06-25 17:15:19,384 - __main__ - INFO - 
+================================================================================
+2026-06-25 17:15:19,384 - __main__ - INFO - STEP 5: GENERATING REPORT
+2026-06-25 17:15:19,385 - __main__ - INFO - ================================================================================
+2026-06-25 17:15:19,975 - __main__ - ERROR - FATAL ERROR: '<' not supported between instances of 'str' and 'Timestamp'
+Traceback (most recent call last):
+  File "C:\Users\alifie\Documents\Project\trading\main.py", line 404, in <module>
+    main(regions=args.regions, merge_existing=args.merge_existing)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alifie\Documents\Project\trading\main.py", line 366, in main
+    create_report(results_df, universe_info, skipped_df, errors_df, report_file, trade_history_df=trade_history_df)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alifie\Documents\Project\trading\src\reporting.py", line 259, in create_report
+    recent_sells = trades.sort_values('sell_date', ascending=False).head(30)[[
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alifie\Documents\Project\trading\venv\Lib\site-packages\pandas\core\frame.py", line 8370, in sort_values
+    indexer = nargsort(
+        k, kind=kind, ascending=ascending, na_position=na_position, key=key
+    )
+  File "C:\Users\alifie\Documents\Project\trading\venv\Lib\site-packages\pandas\core\sorting.py", line 442, in nargsort
+    indexer = non_nan_idx[non_nans.argsort(kind=kind)]
+                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'str' and 'Timestamp'
